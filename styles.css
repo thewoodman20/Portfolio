@@ -222,6 +222,17 @@ a::after {
   line-height: 1.6;
   color: #ffffff;
 }
+
+/* Removed empty ruleset for .about .special-link */
+.about .special-link {
+  color: #00aaff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.about .special-link:hover {
+  color: #0077cc;
+}
 /* end of hero and about */
 
 

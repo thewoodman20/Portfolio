@@ -31,9 +31,9 @@
                 <div class="project-info">
                     <h1 class="project-title">Quadruped Locomotion Through Mud (WIP)</h1>
                     <p class="brief-description">
-                        Characterization and modeling of non-Newtonian fluid in Isaac, then training a policy to adapt to 
-                        varying concentrations of mud. Policy is imported onto a Unitree GO2 robot for testing in deep mud. 
-                        Target speed is 10 body lengths per minute while maintaining stability. 
+                        This project develops an approach for "Mud-Adaptive Locomotion", enabling robots to locomote through highly variable muddy terrain safely and efficiently. 
+                        I am responsible for characterizing the non-Newtonian interaction forces the mud will have on the robot and designing a learned control framework 
+                        for predicting interaction forces, which will allow the robot to adapt its contact with the ground.
                     </p>
                     <p class="skills"><strong>Skills: </strong>NVIDIA Isaac, MuJoCo, Reinforcement Learning, QuadSDK, Python, ROS2</p>
                     <p class="expand-hint">Click to expand for more details</p>
@@ -44,10 +44,16 @@
                 <div class="extended-description">
                     <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
-                        Currently implementing mud physics into Physx, which includes modeling the suction, resistive, and shear forces acting on the quadruped leg. 
+                        The non-Newtonian forces are being implemented in IsaacLab by leveraging simulated contact states and velocity data to estimate the ground reaction forces. These forces were 
+                        applied and validated by fixing the body of the robot to the world environment, and moving one leg using PD control. The graph of these reaction forces will be validated by a 
+                        team of undergraduates desiging a leg fixture to measure the mud reaction forces in order to refine the model.
+
                     </p>
                     <p style="margin-bottom: 15px;">
-                        
+                                                
+                        For the learned control framework, I am using a combination of reward shaping in an actor-critic Reinforcement Learning framework, where structured environment observations 
+                        are fed into a critic to stabilize value estimation. This enables the value function to effectively guide policy updates toward optimal behavior during training, while 
+                        targeted reward shaping accelerates the convergence and improves experimental learning stability. 
                     </p>
                 </div>
                 <!-- <div class="slideshow-container">
@@ -443,7 +449,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Robot End Effector  -->
         <div class="project-card">
