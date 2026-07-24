@@ -1,13 +1,12 @@
-
+<!DOCTYPE html>
 <html lang="en">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>George Ortiz Projects</title>
+        <title>George Ortiz | Robotics Projects</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="stylestabs.css">
     </head>
 
@@ -27,13 +26,14 @@
         <!-- Quadruped Locomotion Through Mud -->
         <div id="quad" class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\GradResearch\go2.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/GradResearch/go2.png" alt="Project 1" class="project-image">
                 <div class="project-info">
-                    <h1 class="project-title">Quadruped Locomotion Through Mud (WIP)</h1>
+                    <h1 class="project-title">Quadruped Locomotion Through Mud (W.I.P.)</h1>
                     <p class="brief-description">
-                        This project develops an approach for "Mud-Adaptive Locomotion", enabling robots to locomote through highly variable muddy terrain safely and efficiently. 
-                        I am responsible for characterizing the non-Newtonian interaction forces the mud will have on the robot and designing a learned control framework 
-                        for predicting interaction forces, which will allow the robot to adapt its contact with the ground.
+                        This project, in collaboration with FieldAI, develops an approach for "Mud-Adaptive Locomotion", enabling robots to locomote through highly 
+                        variable muddy terrain safely and efficiently. I am responsible for characterizing the non-Newtonian contact forces on the robot and designing 
+                        a learned control framework for predicting these contact forces, which will allow the robot to adapt its gait in real time to maintain stability 
+                        and traction. 
                     </p>
                     <p class="skills"><strong>Skills: </strong>NVIDIA Isaac, MuJoCo, Reinforcement Learning, QuadSDK, Python, ROS2</p>
                     <p class="expand-hint">Click to expand for more details</p>
@@ -44,41 +44,51 @@
                 <div class="extended-description">
                     <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
-                        The non-Newtonian forces are being implemented in IsaacLab by leveraging simulated contact states and velocity data to estimate the ground reaction forces. These forces were 
+                        <!-- The non-Newtonian forces are being implemented in IsaacLab by leveraging simulated contact states and velocity data to estimate the ground reaction forces. These forces were 
                         applied and validated by fixing the body of the robot to the world environment, and moving one leg using PD control. The graph of these reaction forces will be validated by a 
-                        team of undergraduates desiging a leg fixture to measure the mud reaction forces in order to refine the model.
+                        team of undergraduates desiging a leg fixture to measure the mud reaction forces in order to refine the model. -->
 
+                        On the Newton branch of IsaacLab the example containing a robot interacting with an MPM environment applies the forces one way. 
+                        I imported the Unitree robot, tuned the PD gains to get a stable gait, imported a custom policy onto the robot, and then 
+                        resolved two-way force coupling between the robot and the MPM environment.   
                     </p>
                     <p style="margin-bottom: 15px;">
                                                 
-                        For the learned control framework, I am using a combination of reward shaping in an actor-critic Reinforcement Learning framework, where structured environment observations 
+                        <!-- For the learned control framework, I am using a combination of reward shaping in an actor-critic Reinforcement Learning framework, where structured environment observations 
                         are fed into a critic to stabilize value estimation. This enables the value function to effectively guide policy updates toward optimal behavior during training, while 
-                        targeted reward shaping accelerates the convergence and improves experimental learning stability. 
+                        targeted reward shaping accelerates the convergence and improves experimental learning stability.  -->
                     </p>
                 </div>
-                <!-- <div class="slideshow-container">
+                <div class="slideshow-container">
                     <div class="slideshow">
                         <div class="slide active">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
+                                <!-- <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.youtube.com/embed/N4sN99zHyRc" 
+                                    title="Slide 1 Video"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe> -->
+                                <img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt="Slide 1">
                         </div>
                         <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
+                            <img src="Files/RoboticsProjs/GradResearch/diagram_of_forces.png" alt="Slide 2">
+                            <div class="slide-caption">Diagram of MPM forces on the robot calf link, forces > 0 when out of mud</div>
                         </div>
                         <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
                         <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
                     </div>
                     <div class="slide-indicators"></div>
-                </div> -->
+                </div>
             </div>
         </div>
 
         <!-- Webots MCT Project -->
         <div id="fsd" class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\MCTProject\FSDProj.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">Using Webots to Design FSD for a Tesla Model 3</h1>
                     <p class="brief-description">
@@ -111,15 +121,15 @@
                 <div class="slideshow-container">
                     <div class="slideshow">
                         <div class="slide active">
-                            <img src="Files\RoboticsProjs\MCTProject\A Star.png" alt="Slide 1">
+                            <img src="Files/RoboticsProjs/MCTProject/A Star.png" alt="Slide 1">
                             <div class="slide-caption">A Star Overtake Replanning</div>
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\MCTProject\LQR.png" alt="Slide 2">
+                            <img src="Files/RoboticsProjs/MCTProject/LQR.png" alt="Slide 2">
                             <div class="slide-caption">LQR Controller Results</div>
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\MCTProject\PID.png" alt="Slide 3">
+                            <img src="Files/RoboticsProjs/MCTProject/PID.png" alt="Slide 3">
                             <div class="slide-caption">PID Controller Results</div>
                         </div>
                         <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
@@ -139,7 +149,8 @@
                     <p class="brief-description">
                         Constructed a SO-100 robot arm, calibrated to be in line with the leader arm configuration. Trained using teleoperation, then filters 
                         were added to reduce joint trembling and increase speed. SO-100 was able to autonomously pick up a pen within the reachable workspace, 
-                        draw a dollar sign, and put the pen back down. Techniques like frame skipping were experimented to double the task speed. 
+                        draw a dollar sign, and put the pen back down. Techniques like frame skipping were experimented to double the task speed.
+                    </p>
                     <p class="skills"><strong>Skills: </strong>Calibration, Reinforcement Learning, ACT Policy, Signal Processing, Vision Feedback</p>
                     <p class="expand-hint">Click to expand for more details</p>
                     <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
@@ -183,11 +194,11 @@
         <!-- SESMA 3.0 -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\SESMA\SESMAdevice3dp.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/SESMA/SESMAdevice3dp.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">SESMA 3.0 - Soft Exosuit for patients with Spinal Muscular Atrophy (Capstone)</h1>
                     <p class="brief-description">
-                        This project was an exernal device aimed at assisting type III SMA patients with sit to stand transitions. 
+                        This project was an external device aimed at assisting type III SMA patients with sit to stand transitions. 
                         This device autonomously detected when the user wanted to stand, actuated a spring tied to a spool, and a 
                         cable routed down the wearers' leg pulled them up. Achieved 10% assistance, which beat out the 3-4% of the 
                         previous iteration's design with a great reduction in size. Total volume decreased by 17%, width decreased 28%. 
@@ -219,21 +230,21 @@
                 <div class="slideshow-container">
                     <div class="slideshow">
                         <div class="slide active">
-                            <img src="Files\RoboticsProjs\SESMA\InterpolatedSTS.png" alt="Slide 1">
+                            <img src="Files/RoboticsProjs/SESMA/InterpolatedSTS.png" alt="Slide 1">
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\SESMA\Torque v Elongation .png" alt="Slide 2">
+                            <img src="Files/RoboticsProjs/SESMA/Torque v Elongation .png" alt="Slide 2">
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\SESMA\Machining Pics.png" alt="Slide 3">
+                            <img src="Files/RoboticsProjs/SESMA/Machining Pics.png" alt="Slide 3">
                             <div class="slide-caption">Machined Parts</div>
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\SESMA\Gearing.png" alt="Slide 4">
+                            <img src="Files/RoboticsProjs/SESMA/Gearing.png" alt="Slide 4">
                             <div class="slide-caption">CAD with Gear Switching Mechanism</div>
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\SESMA\Cable Path.png" alt="Slide 5">
+                            <img src="Files/RoboticsProjs/SESMA/Cable Path.png" alt="Slide 5">
                             <div class="slide-caption">Cable Path</div>
                         </div>
                         <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
@@ -247,7 +258,7 @@
         <!-- Manipulation -->
         <div id="manipulation" class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\Manipulation\3dresolvedrates.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/Manipulation/3dresolvedrates.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">Robotic Arm Manipulation: Resolved Rates, Gradient to Compute Min Norm</h1>
                     <p class="brief-description">
@@ -264,7 +275,7 @@
                     <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
                     <p style="margin-bottom: 15px;">
                         The first project shows a resolved rates simulation, which were implemented for link speed optimization. Inverse kinematics via a closed loop resolved rates algorithm 
-                        enabled the robot to adhere to speed constraints (1mm tolerance translation, 0.0524 radians rotational). These results were simualted via 1st order interpolation in MATLAB.
+                        enabled the robot to adhere to speed constraints (1mm tolerance translation, 0.0524 radians rotational). These results were simulated via 1st order interpolation in MATLAB.
                     </p>
                     <p style="margin-bottom: 15px;">
                         My second project involved using both the gradient of a curve and the Jacobian projected into the null space to allow the end effector to maintain orthogonality to a surface. 
@@ -294,7 +305,7 @@
         <!-- Undergrad Research -->
         <div id="camera" class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\UndergradResearch\cameravision.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/UndergradResearch/cameravision.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">Camera Vision - Doosan H2515 Pick and Place Algorithm</h1>
                     <p class="brief-description">
@@ -347,14 +358,14 @@
         <!-- SLAM and RRT -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\SLAMRRT\SLAMAndRRT.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">SLAM and RRT Implementation for 2D Mobile Robot with Obstacle Avoidance</h1>
                     <p class="brief-description">
                         Rapidly-exploring Random Trees were used to plan a collision free path by sampling and exploring the 
                         environment from a start to a goal state. SLAM was then used to estimate and visualize the uncertainty 
                         along the robot's trajectory. Known obstacles were modeled as landmarks to reduce this uncertainty. 
-                        The robot's confidence along the path decreased when it didnt see an obstacle, and once localized the 
+                        The robot's confidence along the path decreased when it didn't see an obstacle, and once localized the
                         confidence increased. 
                     </p>
                     <p class="skills"><strong>Skills: </strong>RRT, SLAM, Kalman Filter, MATLAB</p>
@@ -382,10 +393,10 @@
                             <img src="Files/RoboticsProjs/SLAMRRT/ShortestPath.png" alt="Slide 1">
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\SLAMRRT\MinimumUncertainty.png" alt="Slide 2">
+                            <img src="Files/RoboticsProjs/SLAMRRT/MinimumUncertainty.png" alt="Slide 2">
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\SLAMRRT\MaximumUncertainty.png" alt="Slide 3">
+                            <img src="Files/RoboticsProjs/SLAMRRT/MaximumUncertainty.png" alt="Slide 3">
                         </div>
                         <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
                         <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
@@ -398,7 +409,7 @@
         <!-- Grip Strength Rehabilitation -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\Mechatronics\handsqueezerbox.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">Hand Squeezing Device for Grip Strength Rehabilitation</h1>
                     <p class="brief-description">
@@ -431,15 +442,15 @@
                 <div class="slideshow-container">
                     <div class="slideshow">
                         <div class="slide active">
-                            <img src="Files\RoboticsProjs\Mechatronics\circuitdiagram.png" alt="Slide 1">
+                            <img src="Files/RoboticsProjs/Mechatronics/circuitdiagram.png" alt="Slide 1">
                             <div class="slide-caption">Wiring Diagram</div>
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\Mechatronics\handsqueezerbox.png" alt="Slide 2">
+                            <img src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" alt="Slide 2">
                             <div class="slide-caption">Final Assembly</div>
                         </div>
                         <div class="slide">
-                            <img src="Files\RoboticsProjs\Mechatronics\schematic.png" alt="Slide 3">
+                            <img src="Files/RoboticsProjs/Mechatronics/schematic.png" alt="Slide 3">
                             <div class="slide-caption">Logic Schematic</div>
                         </div>
                         <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
@@ -453,14 +464,14 @@
         <!-- Robot End Effector  -->
         <div class="project-card">
             <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files\RoboticsProjs\Mechatronics\endeffector.png" alt="Project 1" class="project-image">
+                <img src="Files/RoboticsProjs/Mechatronics/endeffector.png" alt="Project 1" class="project-image">
                 <div class="project-info">
                     <h1 class="project-title">Robot End Effector for Pick and Place</h1>
                     <p class="brief-description">
                         Prof. Kishore Pochiraju purchased a Doosan H2515 6 DoF arm for the PROOF Lab, which needed an end effector 
                         for pick and place. A gripper end effector was designed and 3D printed for the PROOF Lab to open and close 
                         its jaws, with a PWM signal from the Arduino sent to a motor controller to actuate the jaws. The Arduino was 
-                        bcontrolled by a digital IO on the robot flange, which allowed for a direct connection with the robot. 
+                        controlled by a digital IO on the robot flange, which allowed for a direct connection with the robot.
                     </p>
                     <p class="skills"><strong>Skills: </strong>SolidWorks, Mechatronics, 3D Printing</p>
                     <p class="expand-hint">Click to expand for more details</p>
@@ -479,6 +490,7 @@
             </div>
         </div>
 
+    </div>
 
     <script src="projectexpand.js"></script>
     </body>

@@ -13,13 +13,23 @@ function generateDots() {
     const dot = document.createElement('span');
     dot.classList.add('dot');
     dot.dataset.index = i;
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('tabindex', '0');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
     if (i === currentIndex) {
       dot.classList.add('active');
     }
-    dot.addEventListener('click', () => {
+    const goTo = () => {
       if (!isTransitioning) {
         currentIndex = i;
         updateCarousel();
+      }
+    };
+    dot.addEventListener('click', goTo);
+    dot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        goTo();
       }
     });
     carouselDots.appendChild(dot);
@@ -110,10 +120,50 @@ if (prevBtn) {
   });
 }
 
-// Auto-advance every 5 seconds
-setInterval(() => {
-  if (!isTransitioning) {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateCarousel();
+// Auto-advance every 5 seconds, paused while the user is reading or interacting.
+// Scoped to the section rather than .carousel-container because the dots sit
+// outside the container and must pause the rotation too.
+const carouselRegion = document.querySelector('.carousel');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let autoAdvanceId = null;
+
+function startAutoAdvance() {
+  if (autoAdvanceId !== null || prefersReducedMotion.matches) return;
+  autoAdvanceId = setInterval(() => {
+    if (!isTransitioning) {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }
+  }, 5000);
+}
+
+function stopAutoAdvance() {
+  clearInterval(autoAdvanceId);
+  autoAdvanceId = null;
+}
+
+if (carouselRegion) {
+  // Pointer and keyboard users both get a pause; focusin covers the arrows and dots.
+  ['mouseenter', 'focusin'].forEach(evt =>
+    carouselRegion.addEventListener(evt, stopAutoAdvance)
+  );
+  ['mouseleave', 'focusout'].forEach(evt =>
+    carouselRegion.addEventListener(evt, startAutoAdvance)
+  );
+}
+
+// Don't keep cycling in a tab the user isn't looking at.
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopAutoAdvance();
+  } else {
+    startAutoAdvance();
   }
-}, 5000);
+});
+
+prefersReducedMotion.addEventListener('change', () => {
+  if (prefersReducedMotion.matches) stopAutoAdvance();
+  else startAutoAdvance();
+});
+
+startAutoAdvance();
