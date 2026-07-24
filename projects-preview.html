@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects Layout — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+/* ---- preview-only banner ---- */
+.preview-note {
+  background: var(--accent); color: var(--on-accent);
+  text-align: center; font-size: .82rem; letter-spacing: .04em;
+  padding: .55rem 1rem;
+}
+
+/* ================= PROJECT GALLERY GRID ================= */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--line);            /* seams between cards */
+  border: 1px solid var(--line);
+}
+.pcard { background: var(--panel); display: flex; }
+.pcard button {
+  all: unset; box-sizing: border-box;
+  display: flex; flex-direction: column;
+  width: 100%; cursor: pointer;
+  transition: background-color .2s ease;
+}
+.pcard button:hover { background: #181b1e; }
+.pcard button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.pcard .thumb { position: relative; height: 190px; background: #000; overflow: hidden; border-bottom: 1px solid var(--line); }
+.pcard .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.pcard button:hover .thumb img { transform: scale(1.04); }
+.pcard .wip {
+  position: absolute; top: 10px; left: 10px;
+  font-size: .6rem; font-weight: 700; letter-spacing: .1em;
+  background: var(--accent); color: var(--on-accent); padding: .1rem .45rem;
+}
+.pcard .n {
+  position: absolute; bottom: 8px; right: 10px;
+  font-size: .7rem; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.pcard .meta { padding: 1rem 1.15rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+.pcard h3 { font-family: var(--display); font-weight: 600; font-size: 1.12rem; line-height: 1.2; margin-bottom: .35rem; }
+.pcard button:hover h3 { color: var(--accent); }
+.pcard .brief { font-size: .85rem; color: var(--muted); margin-bottom: .9rem; }
+.pcard .tags { display: flex; flex-wrap: wrap; gap: .3rem; list-style: none; margin-top: auto; }
+.pcard .tags li { font-size: .68rem; color: #c3cbd3; border: 1px solid var(--line-2); padding: .1rem .45rem; }
+
+/* ================= MODAL ================= */
+.modal { position: fixed; inset: 0; z-index: 200; display: none; }
+.modal.open { display: block; }
+.modal-scrim { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(3px); }
+.modal-panel {
+  position: relative; z-index: 1;
+  max-width: 860px; margin: 4vh auto; max-height: 92vh;
+  background: var(--panel); border: 1px solid var(--line-2);
+  overflow-y: auto;
+}
+.modal-close {
+  position: sticky; top: 0; float: right;
+  background: var(--panel); color: var(--muted); border: 0; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  font-size: 1.4rem; line-height: 1; padding: .6rem .9rem; cursor: pointer; z-index: 3;
+}
+.modal-close:hover { color: var(--accent); }
+.modal-body { padding: 2.25rem 2.5rem 2.75rem; }
+.modal-body h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem,4vw,2.5rem); line-height: 1.1; margin-bottom: .4rem; }
+.modal-body .sub { color: var(--muted); font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.4rem; }
+.modal-body p { color: #c3cbd3; font-size: .97rem; margin-bottom: .9rem; max-width: none; }
+.modal-body .stack { margin-top: 1.2rem; font-size: .85rem; color: var(--muted); }
+.modal-body .stack b { color: var(--text); font-weight: 600; }
+
+/* modal slideshow */
+.show { position: relative; height: 400px; background: #000; border: 1px solid var(--line); margin: 1.6rem 0 .5rem; overflow: hidden; }
+.show .s { position: absolute; inset: 0; opacity: 0; transition: opacity .4s ease; }
+.show .s.on { opacity: 1; }
+.show .s img { width: 100%; height: 100%; object-fit: contain; }
+.show .cap { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,.78); color: #fff; font-size: .82rem; padding: .5rem .8rem; text-align: center; }
+.show nav { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; display: flex; justify-content: space-between; pointer-events: none; }
+.show nav button { pointer-events: auto; background: var(--accent); color: var(--on-accent); border: 0; font-size: 1.3rem; font-weight: 700; padding: .5rem .8rem; cursor: pointer; }
+.show nav button:hover { background: var(--accent-hi); }
+.dots { display: flex; justify-content: center; gap: 8px; margin-top: .8rem; }
+.dots span { width: 9px; height: 9px; background: var(--line-2); cursor: pointer; }
+.dots span.on { background: var(--accent); }
+
+@media (max-width: 620px) {
+  .modal-body { padding: 1.5rem 1.25rem 2rem; }
+  .show { height: 260px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="preview-note">PREVIEW — this is a layout demo of robotics.html. Click any card. Nothing here is live yet.</div>
+
+<header>
+  <div class="wrap">
+    <a class="mark" href="index-redesign.html">GEORGE ORTIZ<span>.</span></a>
+    <nav>
+      <a href="index-redesign.html">Home</a>
+      <a href="robotics.html" aria-current="page">Robotics</a>
+      <a href="miscellaneous.html">Extracurriculars</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-title">Robotics Projects</div>
+
+<main class="wrap" style="padding-bottom:4rem">
+  <div class="pgrid" id="pgrid"></div>
+</main>
+
+<footer class="wrap">
+  <div class="inner">
+    <div class="links">
+      <a href="mailto:georgechan930@gmail.com">georgechan930@gmail.com</a>
+      <a href="https://github.com/georgechanortiz" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="copy">© 2026 George Ortiz</div>
+  </div>
+</footer>
+
+<!-- modal -->
+<div class="modal" id="modal" aria-modal="true" role="dialog">
+  <div class="modal-scrim" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="Close">✕</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* Real content pulled from robotics.html so the demo is representative. */
+const PROJECTS = [
+  {
+    id:'quad', wip:true,
+    title:'Quadruped Locomotion Through Mud',
+    thumb:'Files/RoboticsProjs/GradResearch/go2.png',
+    brief:'Mud-adaptive locomotion with FieldAI — modelling non-Newtonian contact forces.',
+    tags:['NVIDIA Isaac','Reinforcement Learning','ROS2'],
+    body:[
+      "In collaboration with FieldAI, developing an approach for mud-adaptive locomotion so robots can move through highly variable muddy terrain safely and efficiently. I characterise the non-Newtonian contact forces acting on the robot and design a learned control framework to predict them, letting the robot adapt its gait in real time to maintain stability and traction.",
+      "On the Newton branch of IsaacLab I imported the Unitree robot into the MPM example, tuned PD gains for a stable gait, loaded a custom policy, and resolved two-way force coupling between the robot and the MPM environment."
+    ],
+    stack:'NVIDIA Isaac · MuJoCo · Reinforcement Learning · QuadSDK · Python · ROS2',
+    slides:[
+      {src:'Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif', cap:''},
+      {src:'Files/RoboticsProjs/GradResearch/diagram_of_forces.png', cap:'MPM forces on the calf link; forces exceed zero when the leg is clear of the mud.'}
+    ]
+  },
+  {
+    id:'fsd',
+    title:'SLAM and FSD for a Tesla Model 3',
+    thumb:'Files/RoboticsProjs/MCTProject/FSDProj.png',
+    brief:'PID, LQR and MPC controllers benchmarked in Webots, with A* replanning and EKF SLAM.',
+    tags:['LQR','MPC','EKF SLAM','A*'],
+    body:[
+      "Implemented and compared a range of controllers and estimators for a self-driving vehicle in Webots. After tuning, the MPC controller gave the fastest reflexive control, completing the track in under 128 seconds.",
+      "A* replanning let the vehicle overtake a slower car treated as an obstacle, and EKF SLAM estimated the vehicle's position and heading throughout the run."
+    ],
+    stack:'Linearization · PID · LQR · MPC · A* · EKF SLAM',
+    slides:[
+      {src:'Files/RoboticsProjs/MCTProject/A Star.png', cap:'A* overtake replanning'},
+      {src:'Files/RoboticsProjs/MCTProject/LQR.png', cap:'LQR controller results'},
+      {src:'Files/RoboticsProjs/MCTProject/PID.png', cap:'PID controller results'}
+    ]
+  },
+  {
+    id:'hackathon',
+    title:'LeRobot Hackathon — SO-100',
+    thumb:'Files/RoboticsProjs/Hackathon/drawingdollarsign.png',
+    brief:'Built and trained an SO-100 arm; filtering and frame skipping doubled task speed. Won $1,000.',
+    tags:['ACT Policy','Signal Processing','Vision'],
+    body:[
+      "Constructed and calibrated an SO-100 arm, then trained it by teleoperation. Subtracting the leader and follower curves isolated most of the electrical noise, and a low-pass filter cut the joint trembling that was preventing the pen from being picked up.",
+      "Frame skipping — feeding every other frame as a command — doubled the arm's speed. The robot autonomously picked up a pen, drew a dollar sign, and set it down. My team won the $1,000 prize for Most Innovative Use of Data."
+    ],
+    stack:'Calibration · Reinforcement Learning · ACT Policy · Signal Processing',
+    slides:[
+      {src:'Files/RoboticsProjs/Hackathon/rlsetup.jpg', cap:'Setup with webcam and stationary camera'},
+      {src:'Files/RoboticsProjs/Hackathon/robotontable.jpg', cap:'Robot assembly'}
+    ]
+  },
+  {
+    id:'manipulation',
+    title:'Resolved Rates and Manipulation',
+    thumb:'Files/RoboticsProjs/Manipulation/3dresolvedrates.png',
+    brief:'Null-space projection and min-norm pseudoinverse redundancy resolution in MATLAB.',
+    tags:['Jacobian','Null Space','MATLAB'],
+    body:[
+      "A closed-loop resolved-rates algorithm handled inverse kinematics under tight speed constraints (1mm translation, 0.0524 rad rotation), simulated via first-order interpolation in MATLAB.",
+      "A second project used the gradient of a curve and the Jacobian projected into the null space to keep the end effector orthogonal to a surface — directly applicable to welding or writing."
+    ],
+    stack:'Resolved Rates · Null Space Projection · Jacobian · MATLAB',
+    slides:[]
+  },
+  {
+    id:'camera',
+    title:'Pick and Place Camera Algorithm',
+    thumb:'Files/RoboticsProjs/UndergradResearch/cameravision.png',
+    brief:'YOLOv8 model driving a Doosan H2515 arm over a TCP client-server link.',
+    tags:['YOLOv8','OpenCV','Python'],
+    body:[
+      "Collected and annotated a dataset in Roboflow, then trained a YOLOv8 model to identify the pixel location and colour class of cubes. Bounding-box centres from OpenCV were scaled to the workspace and converted into inverse-kinematic solutions.",
+      "Joint commands were sent to the arm using the Doosan Robot Language over a Python socket client-server connection."
+    ],
+    stack:'OpenCV · YOLOv8 · Python · Pick and Place',
+    slides:[]
+  },
+  {
+    id:'slamrrt',
+    title:'SLAM and RRT Planning',
+    thumb:'Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png',
+    brief:'Sampling-based planning with Kalman-filtered uncertainty along the trajectory.',
+    tags:['RRT','SLAM','Kalman Filter'],
+    body:[
+      "RRT planned collision-free paths by sampling from start to goal, while SLAM estimated and visualised the uncertainty along the trajectory. Known obstacles were modelled as landmarks to reduce that uncertainty.",
+      "Across 100 generated trajectories, the plots capture the extreme cases — shortest path, and minimum and maximum uncertainty at the goal — with the Kalman filter tracking uncertainty at each step."
+    ],
+    stack:'RRT · SLAM · Kalman Filter · MATLAB',
+    slides:[
+      {src:'Files/RoboticsProjs/SLAMRRT/ShortestPath.png', cap:'Shortest path found'},
+      {src:'Files/RoboticsProjs/SLAMRRT/MinimumUncertainty.png', cap:'Minimum uncertainty at goal'},
+      {src:'Files/RoboticsProjs/SLAMRRT/MaximumUncertainty.png', cap:'Maximum uncertainty at goal'}
+    ]
+  }
+];
+
+/* ---- build the grid ---- */
+const grid = document.getElementById('pgrid');
+PROJECTS.forEach((p, i) => {
+  const tags = p.tags.map(t => `<li>${t}</li>`).join('');
+  const wip = p.wip ? '<span class="wip">W.I.P.</span>' : '';
+  grid.insertAdjacentHTML('beforeend', `
+    <article class="pcard">
+      <button type="button" data-i="${i}">
+        <div class="thumb">${wip}<img src="${p.thumb}" alt="${p.title}"><span class="n">${String(i+1).padStart(2,'0')}</span></div>
+        <div class="meta">
+          <h3>${p.title}</h3>
+          <p class="brief">${p.brief}</p>
+          <ul class="tags">${tags}</ul>
+        </div>
+      </button>
+    </article>`);
+});
+
+/* ---- modal + slideshow ---- */
+const modal = document.getElementById('modal');
+const modalBody = document.getElementById('modalBody');
+let slideIdx = 0, slideCount = 0, lastFocus = null;
+
+function showSlide(n) {
+  const slides = modalBody.querySelectorAll('.show .s');
+  const dots = modalBody.querySelectorAll('.dots span');
+  if (!slides.length) return;
+  slideIdx = (n + slideCount) % slideCount;
+  slides.forEach((s,i) => s.classList.toggle('on', i === slideIdx));
+  dots.forEach((d,i) => d.classList.toggle('on', i === slideIdx));
+}
+
+function openProj(i) {
+  const p = PROJECTS[i];
+  lastFocus = document.activeElement;
+  let show = '';
+  if (p.slides.length) {
+    const s = p.slides.map((sl,idx) =>
+      `<div class="s ${idx===0?'on':''}"><img src="${sl.src}" alt="">${sl.cap?`<div class="cap">${sl.cap}</div>`:''}</div>`).join('');
+    const dots = p.slides.length > 1
+      ? `<div class="dots">${p.slides.map((_,idx)=>`<span class="${idx===0?'on':''}" data-go="${idx}"></span>`).join('')}</div>` : '';
+    const navBtns = p.slides.length > 1
+      ? `<nav><button data-dir="-1">‹</button><button data-dir="1">›</button></nav>` : '';
+    show = `<div class="show">${s}${navBtns}</div>${dots}`;
+  }
+  modalBody.innerHTML = `
+    <h2>${p.title}</h2>
+    <div class="sub">${p.wip ? 'In progress · ' : ''}${p.tags.length} skills</div>
+    ${p.body.map(par=>`<p>${par}</p>`).join('')}
+    <div class="stack"><b>Stack:</b> ${p.stack}</div>
+    ${show}`;
+  slideCount = p.slides.length; slideIdx = 0;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  modalBody.parentElement.scrollTop = 0;
+  modal.querySelector('.modal-close').focus();
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+
+grid.addEventListener('click', e => {
+  const btn = e.target.closest('button[data-i]');
+  if (btn) openProj(+btn.dataset.i);
+});
+modal.addEventListener('click', e => {
+  if (e.target.hasAttribute('data-close')) return closeModal();
+  const dir = e.target.closest('[data-dir]');
+  if (dir) return showSlide(slideIdx + (+dir.dataset.dir));
+  const go = e.target.closest('[data-go]');
+  if (go) return showSlide(+go.dataset.go);
+});
+document.addEventListener('keydown', e => {
+  if (!modal.classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') showSlide(slideIdx - 1);
+  if (e.key === 'ArrowRight') showSlide(slideIdx + 1);
+});
+</script>
+</body>
+</html>
