@@ -1,767 +1,669 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>George Ortiz | Robotics Projects</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="theme.css">
-        <link rel="stylesheet" href="stylestabs.css">
-    </head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Ortiz | Robotics Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+/* ============================================================
+   EDITORIAL SCROLL LAYOUT
+   Every project is fully readable by scrolling — no clicking
+   required. A sticky capability filter narrows the set.
+   ============================================================ */
 
-    <body>
-        <header>
-            <div class="wrap">
-                <a class="mark" href="index-redesign.html">GEORGE ORTIZ<span>.</span></a>
-                <nav>
-                    <a href="index-redesign.html">Home</a>
-                    <a href="robotics.html" aria-current="page">Robotics</a>
-                    <a href="miscellaneous.html">Extracurriculars</a>
-                    <a href="resume.html">Resume</a>
-                </nav>
-            </div>
-        </header>
-    <div class="page-title">Robotics Projects</div>
-   
-    <div class="container">
+/* ---------- masthead ---------- */
+.mast { max-width: var(--maxw); margin: 3.5rem auto 2rem; padding: 0 2rem; }
+.mast h1 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+  line-height: .98; letter-spacing: -.025em; margin-top: .8rem;
+}
+.mast p { color: var(--muted); font-size: 1rem; margin-top: .9rem; max-width: 60ch; }
 
-        <!-- Quadruped Locomotion Through Mud -->
-        <div id="quad" class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/GradResearch/go2.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">Quadruped Locomotion Through Mud (W.I.P.)</h1>
-                    <p class="brief-description">
-                        This project, in collaboration with FieldAI, develops an approach for "Mud-Adaptive Locomotion", enabling robots to locomote through highly 
-                        variable muddy terrain safely and efficiently. I am responsible for characterizing the non-Newtonian contact forces on the robot and designing 
-                        a learned control framework for predicting these contact forces, which will allow the robot to adapt its gait in real time to maintain stability 
-                        and traction. 
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>NVIDIA Isaac, MuJoCo, Reinforcement Learning, QuadSDK, Python, ROS2</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        <!-- The non-Newtonian forces are being implemented in IsaacLab by leveraging simulated contact states and velocity data to estimate the ground reaction forces. These forces were 
-                        applied and validated by fixing the body of the robot to the world environment, and moving one leg using PD control. The graph of these reaction forces will be validated by a 
-                        team of undergraduates desiging a leg fixture to measure the mud reaction forces in order to refine the model. -->
+/* ---------- sticky capability filter ---------- */
+.filter {
+  position: sticky; top: 58px; z-index: 15;
+  background: rgba(11,12,13,.92); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  margin-bottom: 1px;
+}
+.filter .inner {
+  max-width: var(--maxw); margin: 0 auto; padding: .7rem 2rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.filter .tally { margin-left: auto; font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 
-                        On the Newton branch of IsaacLab the example containing a robot interacting with an MPM environment applies the forces one way. 
-                        I imported the Unitree robot, tuned the PD gains to get a stable gait, imported a custom policy onto the robot, and then 
-                        resolved two-way force coupling between the robot and the MPM environment.   
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                                                
-                        <!-- For the learned control framework, I am using a combination of reward shaping in an actor-critic Reinforcement Learning framework, where structured environment observations 
-                        are fed into a critic to stabilize value estimation. This enables the value function to effectively guide policy updates toward optimal behavior during training, while 
-                        targeted reward shaping accelerates the convergence and improves experimental learning stability.  -->
-                    </p>
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                                <!-- <iframe 
-                                    width="100%" 
-                                    height="100%" 
-                                    src="https://www.youtube.com/embed/N4sN99zHyRc" 
-                                    title="Slide 1 Video"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe> -->
-                                <img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt="Slide 1">
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/GradResearch/diagram_of_forces.png" alt="Slide 2">
-                            <div class="slide-caption">Diagram of MPM forces on the robot calf link, forces > 0 when out of mud</div>
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
-        </div>
+/* toggle button that reveals the filter options */
+.dropdown { position: relative; }
+.dropdown-toggle {
+  all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: .55rem;
+  font-size: .82rem; color: var(--text);
+  padding: .3rem .8rem; border: 1px solid var(--line-2);
+  transition: border-color .18s ease, background-color .18s ease;
+}
+.dropdown-toggle:hover { border-color: var(--accent); }
+.dropdown-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dropdown-toggle .chevron { font-size: .65rem; color: var(--muted); transition: transform .2s ease; }
+.dropdown.open .dropdown-toggle { border-color: var(--accent); }
+.dropdown.open .dropdown-toggle .chevron { transform: rotate(180deg); }
 
-        <!-- Webots MCT Project -->
-        <div id="fsd" class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">Using Webots to Design FSD for a Tesla Model 3</h1>
-                    <p class="brief-description">
-                        This project involved the implementation of a variety of efficient controls 
-                        and estimators for a self-driving vehicle. Ultimately, I ended up implementing a PID controller,
-                        an LQR controller, MPC. Each controller was tested and graphed to compare. The MPC controller resulted in 
-                        the fastest reflexive control, yielding in a completion of the track in under 128 seconds. 
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>Linearization, PID, Controllability, Stabilizability, LQR, MPC, A Star, EKF SLAM</p>
-                <p class="expand-hint">Click to expand for more details</p>
-                <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        I began by tuning the proportional, integral and derivative gains to optimize PID performance. Next, since 
-                        longitudinal control varies the speed, I linearized the lateral control, or turning, using pole placement. 
-                        I discretized my model and then implemented LQR, which after tuning achieved a speed of under 130 seconds,  
-                        rewarding me with an additional 10 points extra credit for this project. I was able to achieve this speed
-                        by tuning how far ahead the vehicle looked, which gave the vehicle more time to react to the updated information. 
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        I also implemented path planning algorithms and estimators, such as A Star and EKF SLAM. A Star was used to replan
-                        a trajectory when a slow moving car posed as an "obstacle" ahead. A Star allowed my vehicle to overtake the slower 
-                        vehicle in the straight. EKF SLAM was used as an estimator to determine the rough position and heading of the vehicle. 
-                    </p>
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="Files/RoboticsProjs/MCTProject/A Star.png" alt="Slide 1">
-                            <div class="slide-caption">A Star Overtake Replanning</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/MCTProject/LQR.png" alt="Slide 2">
-                            <div class="slide-caption">LQR Controller Results</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/MCTProject/PID.png" alt="Slide 3">
-                            <div class="slide-caption">PID Controller Results</div>
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
-        </div>
+.dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 20;
+  display: flex; flex-direction: column; min-width: 200px;
+  background: rgba(17,18,20,.98); backdrop-filter: blur(10px);
+  border: 1px solid var(--line-2);
+  box-shadow: 0 12px 28px rgba(0,0,0,.5);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .16s ease, transform .16s ease, visibility 0s linear .16s;
+}
+.dropdown.open .dropdown-menu {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition: opacity .16s ease, transform .16s ease;
+}
+.dropdown-menu button {
+  all: unset; cursor: pointer; text-align: left;
+  font-size: .82rem; color: var(--muted);
+  padding: .55rem .9rem; border-bottom: 1px solid var(--line);
+  transition: color .15s ease, background-color .15s ease;
+}
+.dropdown-menu button:last-child { border-bottom: none; }
+.dropdown-menu button:hover { color: var(--text); background: rgba(255,255,255,.05); }
+.dropdown-menu button[aria-pressed="true"] { color: var(--on-accent); background: var(--accent); }
+.dropdown-menu button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
-        <!-- LeRobot Arm Hackathon NYC - SO-100 Robot -->
-        <div id="hackathon" class="project-card"> 
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">LeRobot Arm Hackathon NYC - SO-100 Robot</h1>
-                    <p class="brief-description">
-                        Constructed a SO-100 robot arm, calibrated to be in line with the leader arm configuration. Trained using teleoperation, then filters 
-                        were added to reduce joint trembling and increase speed. SO-100 was able to autonomously pick up a pen within the reachable workspace, 
-                        draw a dollar sign, and put the pen back down. Techniques like frame skipping were experimented to double the task speed.
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>Calibration, Reinforcement Learning, ACT Policy, Signal Processing, Vision Feedback</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="https://devpost.com/software/kanye-assistant">Devpost Link</a></p>
-                    <p style="margin-bottom: 15px;">
-                        Team was given all components to construct the SO-100 robot arm, including motors, controllers, 3D printed components, and cameras. 
-                        We spent the first 4-5 hours formulating a plan for what to do with the robot, construction, and calibration of the robot. During 
-                        training, we noticed lots of noise in the trained policy which prevented the pen from being picked up. 
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        Using the curves obtained from the leader and follower configuration, we were able to subtract the two to isolate most of the 
-                        electrical noise in the system. Using a low pass filter, this noise was greatly reduced, and using "frame skipping" where we 
-                        fed every other frame as a command to the robot doubled its speed. My team won the $1,000 prize for the "Most Innovative Use of Data". 
-                    </p>
-                    
+/* ---------- project band ---------- */
+.proj {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 4rem 2rem; border-bottom: 1px solid var(--line);
+}
+.proj[hidden] { display: none; }
 
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="Files/RoboticsProjs/Hackathon/rlsetup.jpg" alt="Slide 1">
-                            <div class="slide-caption">Setup with Webcam and stationary camera</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/Hackathon/robotontable.jpg" alt="Slide 2">
-                            <div class="slide-caption">Robot Assembly</div>
-                        </div>
+.proj-head { display: grid; grid-template-columns: 92px 1fr; gap: 1.5rem; align-items: start; margin-bottom: 2rem; }
+.proj-head .num {
+  font-family: var(--display); font-weight: 700;
+  font-size: 3.4rem; line-height: .8; color: var(--line-2);
+  font-variant-numeric: tabular-nums;
+}
+.proj:target .proj-head .num,
+.proj:hover .proj-head .num { color: var(--accent); transition: color .3s ease; }
+.proj-head h2 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(1.6rem, 3.4vw, 2.35rem);
+  line-height: 1.08; letter-spacing: -.01em;
+}
+.proj-head .where {
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin-top: .5rem;
+}
+.proj-head .where .wip { color: var(--accent); }
 
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
-        </div>
+/* alternating body: media / text, flipped on every other project */
+.proj-body { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2.5rem; align-items: start; }
+.proj:nth-of-type(even) .media { order: 2; }
 
-        <!-- SESMA 3.0 -->
-        <div class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/SESMA/SESMAdevice3dp.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">SESMA 3.0 - Soft Exosuit for patients with Spinal Muscular Atrophy (Capstone)</h1>
-                    <p class="brief-description">
-                        This project was an external device aimed at assisting type III SMA patients with sit to stand transitions. 
-                        This device autonomously detected when the user wanted to stand, actuated a spring tied to a spool, and a 
-                        cable routed down the wearers' leg pulled them up. Achieved 10% assistance, which beat out the 3-4% of the 
-                        previous iteration's design with a great reduction in size. Total volume decreased by 17%, width decreased 28%. 
-                        Final prototype was sturdier and relocated to the sides, which was more realistic for a wearer (They can now 
-                        lean back in their chair).
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>Mechatronics, 3D splines, CAD, SolidWorks</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        The challenge with this project was the use of a single motor to actuate both the charging mechanism 
-                        for the spring and the turning of a cam to change the state. This was done using a geared switching mechanism
-                        on the motor to switch between the camshaft and the powershaft. Two leads were used to reduce the distance needed
-                        to travel from one shaft to the other. 
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        To autonomously detect a STS transition, we ran testing using a motion capture setup with cameras and markers routed
-                        in the same areas as a cable would be routed down a patient's leg. I took these points in 3D space and created a 3D
-                        spline through them, which interpolated between the points. These splines were discretized and summed to give a good
-                        approximation as to how much the length of the cable changed from sitting to standing. We then compared this data to 
-                        data found in a paper that determined the point of maximum knee torque, and actuated the mechanism at that point. 
-                    </p>
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="Files/RoboticsProjs/SESMA/InterpolatedSTS.png" alt="Slide 1">
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/SESMA/Torque v Elongation .png" alt="Slide 2">
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/SESMA/Machining Pics.png" alt="Slide 3">
-                            <div class="slide-caption">Machined Parts</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/SESMA/Gearing.png" alt="Slide 4">
-                            <div class="slide-caption">CAD with Gear Switching Mechanism</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/SESMA/Cable Path.png" alt="Slide 5">
-                            <div class="slide-caption">Cable Path</div>
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
-        </div>
+.media .main {
+  background: #000; border: 1px solid var(--line);
+  height: 340px; overflow: hidden;
+}
+.media .main img,
+.media .main video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+.media .cap { font-size: .78rem; color: var(--muted); margin-top: .55rem; min-height: 1.2em; }
+.media .thumbs { display: flex; gap: 6px; margin-top: .6rem; flex-wrap: wrap; }
+.media .thumbs button {
+  all: unset; position: relative; cursor: pointer; width: 58px; height: 40px;
+  border: 1px solid var(--line); background: #000; overflow: hidden; opacity: .5;
+  transition: opacity .2s ease, border-color .2s ease;
+}
+.media .thumbs button img,
+.media .thumbs button video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* play badge marks a video thumbnail */
+.media .thumbs button[data-type="video"]::after {
+  content: "▶";
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: .62rem; color: #fff;
+  background: rgba(0,0,0,.35); text-shadow: 0 1px 3px rgba(0,0,0,.9);
+}
+.media .thumbs button:hover { opacity: .85; }
+.media .thumbs button[aria-selected="true"] { opacity: 1; border-color: var(--accent); }
+.media .thumbs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-        <!-- Manipulation -->
-        <div id="manipulation" class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/Manipulation/3dresolvedrates.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">Robotic Arm Manipulation: Resolved Rates, Gradient to Compute Min Norm</h1>
-                    <p class="brief-description">
-                        This project is a combination of assignments from a graduate course at Stevens, ME 650. This course covered optimization and mathematical design techniques for 
-                        control of serial manipulators. In this course, I used various techniques to control manipulators in different contexts.
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>Resolved Rates, Null Space Projection, Jacobian, Cost Functions, MATLAB</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        The first project shows a resolved rates simulation, which were implemented for link speed optimization. Inverse kinematics via a closed loop resolved rates algorithm 
-                        enabled the robot to adhere to speed constraints (1mm tolerance translation, 0.0524 radians rotational). These results were simulated via 1st order interpolation in MATLAB.
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        My second project involved using both the gradient of a curve and the Jacobian projected into the null space to allow the end effector to maintain orthogonality to a surface. 
-                        Robot links and movement were simulated in MATLAB with a minimum norm pseudoinverse redundancy resolution algorithm. Maintaining this orthogonality to a surface is highly 
-                        applicable in welding or writing applications. 
-                    </p>
-                </div>
-                <!-- <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div> -->
-            </div>
-        </div>
+.text p { color: #c3cbd3; font-size: .96rem; max-width: none; }
+.text p + p { margin-top: .8rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; margin-top: 1.3rem; }
+.chips li { font-size: .71rem; color: #c3cbd3; border: 1px solid var(--line-2); padding: .13rem .5rem; }
+.out { margin-top: 1.1rem; font-size: .9rem; }
+.out a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+.out a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
-        <!-- Undergrad Research -->
-        <div id="camera" class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/UndergradResearch/cameravision.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">Camera Vision - Doosan H2515 Pick and Place Algorithm</h1>
-                    <p class="brief-description">
-                        Collected, annotated, and trained a YOLOv8 model to identify the pixel location and color class of cubes.
-                        Pixel coordinates were converted directly into a numerical inverse kinematic solution for arm navigation. 
-                        Function was then used in path planning algorithms, which was communicated via a client-server connection, 
-                        emulating TCP protocols for the robot arm to execute.  
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>OpenCV, YOLOv8, Python, Pick and Place</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        Data was collected using a webcam overlooking foam cubes scattered across the workspace. These images were 
-                        annotated in Roboflow, then exported and trained using YOLOv8. Since the dataset was small, there was a lower 
-                        confidence in colors close to the table, such as orange or yellow. Colors with higher contrast were identifiable
-                        with a higher confidence and were used instead. The center of the bounding box was found using OpenCV, and the 
-                        coordinates were parameterized and scaled to fit the workspace. The joint angles were also interpolated, which 
-                        worked for this case but for other cases resolved rates algorithm would be more generalizable. 
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        Once joint angles were computed, the robot was sent these joint commands using the Doosan Robot Language, a 
-                        Python-based framework from Doosan. I used the sockets library in Python to establish a client-server connection, 
-                        which sent the robot commands to the robot to operate in the workspace. 
-                    </p>
-                </div>
-                <!-- <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div> -->
-            </div>
-        </div>
+.empty { max-width: var(--maxw); margin: 0 auto; padding: 4rem 2rem; color: var(--muted); }
 
-        <!-- SLAM and RRT -->
-        <div class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">SLAM and RRT Implementation for 2D Mobile Robot with Obstacle Avoidance</h1>
-                    <p class="brief-description">
-                        Rapidly-exploring Random Trees were used to plan a collision free path by sampling and exploring the 
-                        environment from a start to a goal state. SLAM was then used to estimate and visualize the uncertainty 
-                        along the robot's trajectory. Known obstacles were modeled as landmarks to reduce this uncertainty. 
-                        The robot's confidence along the path decreased when it didn't see an obstacle, and once localized the
-                        confidence increased. 
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>RRT, SLAM, Kalman Filter, MATLAB</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        I learned how sampling-based motion planning and state estimation can be used for reliable navigation. 
-                        RRT was iteratively used to find paths, and SLAM provided a framework for estimating the error. Obstacle 
-                        locations were known, so they were useful as landmarks and sensor measurements. 
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        The RRT algorithm generated 100 trajectories, and the final plots represent the most extreme cases, which 
-                        includes the shortest path and the minimum and maximum uncertainty at the goal state. The Kalman filter 
-                        calculated the uncertainty at each time step, which was visualized in MATLAB.
-                    </p>
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="Files/RoboticsProjs/SLAMRRT/ShortestPath.png" alt="Slide 1">
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/SLAMRRT/MinimumUncertainty.png" alt="Slide 2">
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/SLAMRRT/MaximumUncertainty.png" alt="Slide 3">
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
-        </div>
+/* ---------- responsive ---------- */
+@media (max-width: 880px) {
+  .proj-body { grid-template-columns: 1fr; gap: 1.5rem; }
+  .proj:nth-of-type(even) .media { order: 0; }
+  .media .main { height: 260px; }
+}
+@media (max-width: 620px) {
+  .mast { padding: 0 1.25rem; margin-top: 2.25rem; }
+  .filter .inner { padding: .6rem 1.25rem; }
+  .filter .tally { display: none; }
+  .proj { padding: 2.75rem 1.25rem; }
+  .proj-head { grid-template-columns: 56px 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .proj-head .num { font-size: 2.2rem; }
+  .media .main { height: 210px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
 
-        <!-- Grip Strength Rehabilitation -->
-        <div class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">Hand Squeezing Device for Grip Strength Rehabilitation</h1>
-                    <p class="brief-description">
-                        This project is a culmination of a graduate mechatronics course taught at Stevens, ME 522. The knob 
-                        on top of the box controls the "squeezing strength", which is outputted by the LCD screen. The resulting
-                        force on the grippers is changed using a fourbar linkage to slide a spring. A limit switch on the handle 
-                        counts the repetitions. 
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>Mechatronics, PICBasic Pro, PIC16f88 Microcontroller</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        This device was designed to alleviate joint pain and rebuild hand/forearm strength. Applications could be in 
-                        PT clinics or doctors offices to test and monitor grip strength and document effectiveness. The device used a 
-                        PIC16F88 microcontroller, programmed in PICBasic Pro. Polling used to detect when the limit switch was triggered,
-                        which activates a buzzer and a rep count is displayed on an LCD. A challenge faced was coding the force; "ADCIN" was 
-                        needed instead of the "Pot" function to read the potentiometer output and translate the force.  
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        The force was translated through a fourbar linkage and a spring. The fourbar linkage stretched the spring, which 
-                        due to an extremely limited budget was a rubber band. For future implementations with a real budget, a better 
-                        spring with more variation would be used for more practical application. 
-                    </p>
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="Files/RoboticsProjs/Mechatronics/circuitdiagram.png" alt="Slide 1">
-                            <div class="slide-caption">Wiring Diagram</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" alt="Slide 2">
-                            <div class="slide-caption">Final Assembly</div>
-                        </div>
-                        <div class="slide">
-                            <img src="Files/RoboticsProjs/Mechatronics/schematic.png" alt="Slide 3">
-                            <div class="slide-caption">Logic Schematic</div>
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
-        </div>
+<header>
+  <div class="wrap">
+    <a class="mark" href="index.html">GEORGE ORTIZ<span></span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="robotics.html" aria-current="page">Robotics</a>
+      <a href="miscellaneous.html">Extracurriculars</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
 
-        <!-- Robot End Effector  -->
-        <div class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="Files/RoboticsProjs/Mechatronics/endeffector.png" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">Robot End Effector for Pick and Place</h1>
-                    <p class="brief-description">
-                        Prof. Kishore Pochiraju purchased a Doosan H2515 6 DoF arm for the PROOF Lab, which needed an end effector 
-                        for pick and place. A gripper end effector was designed and 3D printed for the PROOF Lab to open and close 
-                        its jaws, with a PWM signal from the Arduino sent to a motor controller to actuate the jaws. The Arduino was 
-                        controlled by a digital IO on the robot flange, which allowed for a direct connection with the robot.
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>SolidWorks, Mechatronics, 3D Printing</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                    <p class="minimize-hint" style="display: none;">Click again to minimize this tab</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <!-- <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p> -->
-                    <p style="margin-bottom: 15px;">
-                        The robot arm came with a digital IO on the flange which outputted 24V. I stepped down this voltage using a 
-                        voltage divider circuit to 5V, which an Arduino then received. The Arduino then sent a PWM signal to a motor 
-                        controller, which actauted the jaws. A gear and hinging mechanism was used to open and close the jaws.  
-                    </p>
-                </div>
-            </div>
-        </div>
+<div class="mast">
+  <div class="label">Robotics</div>
+  <h1>Research and Projects</h1>
+  <p>Locomotion and reinforcement learning, planning and control, perception, and mechatronics</p>
+</div>
 
-    </div>
-
-    <footer class="wrap">
-      <div class="inner">
-        <div class="links">
-          <a href="mailto:georgechan930@gmail.com">georgechan930@gmail.com</a>
-          <a href="https://github.com/georgechanortiz" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-        <div class="copy">© 2026 George Ortiz</div>
+<!-- capability filter -->
+<div class="filter">
+  <div class="inner">
+    <div class="dropdown" id="filterDropdown">
+      <button type="button" class="dropdown-toggle" id="filterToggle" aria-haspopup="true" aria-expanded="false">
+        <span class="dropdown-label">Filter: All</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="dropdown-menu" id="filterMenu" role="menu">
+        <button type="button" role="menuitemradio" data-cap="all" aria-pressed="true">All</button>
+        <button type="button" role="menuitemradio" data-cap="locomotion" aria-pressed="false">Locomotion &amp; RL</button>
+        <button type="button" role="menuitemradio" data-cap="control" aria-pressed="false">Planning &amp; Control</button>
+        <button type="button" role="menuitemradio" data-cap="perception" aria-pressed="false">Perception</button>
+        <button type="button" role="menuitemradio" data-cap="mechatronics" aria-pressed="false">Mechatronics</button>
+        <button type="button" role="menuitemradio" data-cap="research" aria-pressed="false">Research</button>
       </div>
-    </footer>
+    </div>
+    <span class="tally" id="tally"></span>
+  </div>
+</div>
 
-    <script src="projectexpand.js"></script>
-    </body>
-</html>
-
-
-
+<main id="list">
 
 
-
-
-
-
-
-
-<!-- TEMPLATE  -->
-
-<!-- 
-
-        <div class="project-card">
-            <div class="project-content" onclick="toggleExpand(this.parentElement)">
-                <img src="IMAGE FILE PATH HERE" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h1 class="project-title">PROJECT TITLE</h1>
-                    <p class="brief-description">
-                        ENTER BRIEF DESCRIPTION HERE
-                    </p>
-                    <p class="skills"><strong>Skills: </strong>ENTER SKILLS HERE</p>
-                    <p class="expand-hint">Click to expand for more details</p>
-                </div>
-            </div>
-            <div class="extended-content">
-                <div class="extended-description">
-                    <p class="links"><strong>Links: </strong> <a href="LINK PATH">LINK NAME</a></p>
-                    <p style="margin-bottom: 15px;">
-                        LONGER DESCRIPTION HERE
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        LONGER DESCRIPTION HERE
-                    </p>
-                </div>
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <div class="slide active">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 1">
-                            <div class="slide-caption">ENTER CAPTION HERE</div>
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 2">
-                            <div class="slide-caption">ENTER CAPTION HERE</div>
-                        </div>
-                        <div class="slide">
-                            <img src="IMAGE FILE PATH HERE" alt="Slide 3">
-                            <div class="slide-caption">ENTER CAPTION HERE</div>
-                        </div>
-                        <button class="slide-nav prev" onclick="changeSlide(this, -1)">‹</button>
-                        <button class="slide-nav next" onclick="changeSlide(this, 1)">›</button>
-                    </div>
-                    <div class="slide-indicators"></div>
-                </div>
-            </div>
+  <!-- <article class="proj" id="PROJECT_ID" data-cap="control">
+    <div class="proj-head">
+      <span class="num">10</span>
+      <div>
+        <h2>Project Title</h2>
+        <div class="where">Lab or course · context</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/Folder/main.png" alt="Describe the image"></div>
+        <div class="cap">Caption for the image above</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true"  data-src="Files/RoboticsProjs/Folder/main.png" data-cap="Caption for the image above"><img src="Files/RoboticsProjs/Folder/main.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Folder/two.png"  data-cap="Second caption"><img src="Files/RoboticsProjs/Folder/two.png" alt=""></button>
         </div>
-
-
- -->
-
-
-
-
-
-
-
-
- 
+      </div>
+      <div class="text">
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <ul class="chips"><li>Skill</li><li>Skill</li><li>Skill</li></ul>
+        <div class="out"><a href="https://example.com" target="_blank" rel="noopener">Link label ↗</a></div>
+      </div>
+    </div>
+  </article> -->
 
 
 
-<!-- 
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>George Ortiz Projects</title>
-        <link rel="stylesheet" href="stylestabs.css">
-    </head>
+
+
+      <!-- ============ 01 ============ -->
+  <article class="proj" id="quad" data-cap="locomotion research">
+    <div class="proj-head">
+      <span class="num">01</span>
+      <div>
+        <h2>Quadruped Locomotion Through Mud</h2>
+        <div class="where">Robomechanics Lab, CMU · Collaboration with FieldAI · <span class="wip">In progress</span></div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt="Quadruped walking through simulated mud"></div>
+        <div class="cap">Unitree quadruped in an MPM mud environment</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" data-cap="Unitree quadruped in an MPM mud environment"><img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/GradResearch/diagram_of_forces.png" data-cap="MPM forces on the calf link; forces exceed zero when the leg is clear of the mud"><img src="Files/RoboticsProjs/GradResearch/diagram_of_forces.png" alt=""></button>
+
+        </div>
+      </div>
+      <div class="text">
+        <p>In collaboration with FieldAI, this project develops an approach for mud-adaptive locomotion, enabling robots to move through highly variable muddy terrain safely and efficiently. I characterise the non-Newtonian contact forces acting on the robot and design a learned control framework to predict them, which lets the robot adapt its gait in real time to maintain stability and traction.</p>
+        <p>On the Newton branch of IsaacLab I imported the Unitree robot into the MPM example, tuned the PD gains to get a stable gait, loaded a custom policy onto the robot, and resolved two-way force coupling between the robot and the MPM environment.</p>
+        <ul class="chips"><li>NVIDIA Isaac</li><li>Newton</li><li>Genesis</li><li>Reinforcement Learning</li><li>Python</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 02 ============ -->
+  <article class="proj" id="mujoco" data-cap="locomotion control research">
+    <div class="proj-head">
+      <span class="num">02</span>
+      <div>
+        <h2>Quad-SDK: MuJoCo Integration, Plotting Code</h2>
+        <div class="where">Robomechanics Lab, CMU</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main">
+          <!-- autoplay + muted + loop = GIF behaviour at a fraction of the size -->
+          <video autoplay muted loop playsinline controls preload="metadata"
+                 src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-40-22.webm.mp4"></video>
+        </div>
+        <div class="cap">Quadruped running in MuJoCo through Quad-SDK</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true"  data-type="video"
+                  data-src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-40-22.webm.mp4"
+                  data-cap="Quadruped running in MuJoCo through Quad-SDK">
+            <video muted preload="metadata" src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-40-22.webm.mp4#t=0.1"></video>
+          </button>
+          <button type="button" aria-selected="false" data-type="video"
+                  data-src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-42-14.webm"
+                  data-cap="MuJoCo simulation run">
+            <video muted preload="metadata" src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-42-14.webm#t=0.1"></video>
+          </button>
+          <button type="button" aria-selected="false" data-type="video"
+                  data-src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-52-50.webm"
+                  data-cap="MuJoCo simulation run">
+            <video muted preload="metadata" src="Files/RoboticsProjs/GradResearch/MuJoCo/Screencast from 2026-06-10 21-52-50.webm#t=0.1"></video>
+          </button>
+        </div>
+      </div>
+      <div class="text">
+        <p>As part of Quad-SDK's migration to ROS2, I added support for MuJoCo as a new simulation backend. MuJoCo's convex-optimization-based contact solver produces smoother, better-conditioned dynamics, and it's widely used in modern robotics research for simulation and learning control policies. I made a range of quadrupeds compatible with Quad-SDK's existing environment samples and wired them into the control stack.</p>
+        <p>I also wrote new plotting code to visualize simulation results and analyze quadruped performance under various conditions. Quad-SDK's original plotting code was written in MATLAB, which produced good paper-quality plots but was slow to generate, so I built faster tooling suited to day-to-day debugging and analysis. It's since been used to debug and analyze performance on a beam-walking locomotion project.</p>
+        <ul class="chips"><li>MuJoCo</li><li>Quad-SDK</li><li>ROS2</li><li>Simulation</li><li>Python</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 03 ============ -->
+  <article class="proj" id="hackathon" data-cap="locomotion perception">
+    <div class="proj-head">
+      <span class="num">03</span>
+      <div>
+        <h2>LeRobot Arm Hackathon NYC — SO-100</h2>
+        <div class="where">Hackathon · $1,000 prize</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt="SO-100 arm drawing a dollar sign"></div>
+        <div class="cap">Drawing a dollar sign autonomously</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" data-cap="Drawing a dollar sign autonomously"><img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Hackathon/rlsetup.jpg" data-cap="Setup with webcam and stationary camera"><img src="Files/RoboticsProjs/Hackathon/rlsetup.jpg" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Hackathon/robotontable.jpg" data-cap="Robot assembly"><img src="Files/RoboticsProjs/Hackathon/robotontable.jpg" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>My team was given the components to construct an SO-100 robot arm — motors, controllers, 3D printed parts and cameras. We planned, built and calibrated the arm to match the leader arm configuration, then trained it by teleoperation. During training we saw a lot of noise in the learned policy, which stopped the pen from being picked up reliably.</p>
+        <p>Subtracting the leader and follower curves isolated most of the electrical noise, and a low-pass filter greatly reduced the joint trembling. Frame skipping — feeding every other frame as a command — doubled the arm's speed. We won the $1,000 prize for Most Innovative Use of Data.</p>
+        <ul class="chips"><li>Calibration</li><li>Reinforcement Learning</li><li>ACT Policy</li><li>Signal Processing</li><li>Vision Feedback</li></ul>
+        <div class="out"><a href="https://devpost.com/software/kanye-assistant" target="_blank" rel="noopener">Devpost writeup ↗</a></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 04 ============ -->
+  <article class="proj" id="fsd" data-cap="control">
+    <div class="proj-head">
+      <span class="num">04</span>
+      <div>
+        <h2>Using Webots to Design FSD for a Tesla Model 3</h2>
+        <div class="where">24-677 · Carnegie Mellon University</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt="Self-driving Tesla Model 3 in Webots"></div>
+        <div class="cap"></div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/MCTProject/FSDProj.png" data-cap=""><img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/MCTProject/A Star.png" data-cap="A* overtake replanning"><img src="Files/RoboticsProjs/MCTProject/A Star.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/MCTProject/LQR.png" data-cap="LQR controller results"><img src="Files/RoboticsProjs/MCTProject/LQR.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/MCTProject/PID.png" data-cap="PID controller results"><img src="Files/RoboticsProjs/MCTProject/PID.png" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>This project implemented a range of controllers and estimators for a self-driving vehicle. I began by tuning the proportional, integral and derivative gains for PID performance. Since longitudinal control varies the speed, I linearised the lateral control using pole placement, discretised the model, and implemented LQR — which after tuning completed the track in under 130 seconds. Most of that gain came from tuning how far ahead the vehicle looked, giving it more time to react.</p>
+        <p>I also implemented planning and estimation. A* replanned the trajectory when a slower car acted as an obstacle, letting the vehicle overtake on the straight, and EKF SLAM estimated the rough position and heading of the vehicle throughout.</p>
+        <ul class="chips"><li>Linearization</li><li>PID</li><li>LQR</li><li>MPC</li><li>A*</li><li>EKF SLAM</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 05 ============ -->
+  <article class="proj" id="slamrrt" data-cap="control">
+    <div class="proj-head">
+      <span class="num">05</span>
+      <div>
+        <h2>SLAM and RRT for a 2D Mobile Robot</h2>
+        <div class="where">ME 656 · Stevens Institute of Technology</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" alt="SLAM and RRT planning"></div>
+        <div class="cap"></div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" data-cap=""><img src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SLAMRRT/ShortestPath.png" data-cap="Shortest path found"><img src="Files/RoboticsProjs/SLAMRRT/ShortestPath.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SLAMRRT/MinimumUncertainty.png" data-cap="Minimum uncertainty at the goal"><img src="Files/RoboticsProjs/SLAMRRT/MinimumUncertainty.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SLAMRRT/MaximumUncertainty.png" data-cap="Maximum uncertainty at the goal"><img src="Files/RoboticsProjs/SLAMRRT/MaximumUncertainty.png" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>Rapidly-exploring Random Trees planned a collision-free path by sampling the environment from a start to a goal state. SLAM then estimated and visualised the uncertainty along the robot's trajectory, with known obstacles modelled as landmarks to reduce it. The robot's confidence decreased when it couldn't see an obstacle, and rose again once it localised.</p>
+        <p>The RRT algorithm generated 100 trajectories, and the final plots capture the extreme cases — the shortest path, and the minimum and maximum uncertainty at the goal state. A Kalman filter computed the uncertainty at each time step.</p>
+        <ul class="chips"><li>RRT</li><li>SLAM</li><li>Kalman Filter</li><li>Obstacle Avoidance</li><li>MATLAB</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 06 ============ -->
+  <article class="proj" id="manipulation" data-cap="control">
+    <div class="proj-head">
+      <span class="num">06</span>
+      <div>
+        <h2>Resolved Rates &amp; Min-Norm Redundancy Resolution</h2>
+        <div class="where">ME 650, Stevens Institute of Technology</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/Manipulation/3dresolvedrates.png" alt="Resolved rates manipulator simulation"></div>
+        <div class="cap"></div>
+      </div>
+      <div class="text">
+        <p>A combination of assignments from a graduate course covering optimisation and mathematical design techniques for the control of serial manipulators. The first showed a resolved rates simulation for link speed optimisation: inverse kinematics via a closed-loop resolved rates algorithm let the robot adhere to speed constraints (1mm translation tolerance, 0.0524 radians rotational), simulated via first-order interpolation in MATLAB.</p>
+        <p>The second used both the gradient of a curve and the Jacobian projected into the null space to keep the end effector orthogonal to a surface, simulated with a minimum-norm pseudoinverse redundancy resolution algorithm. Maintaining that orthogonality is directly applicable to welding or writing.</p>
+        <ul class="chips"><li>Resolved Rates</li><li>Null Space Projection</li><li>Jacobian</li><li>Cost Functions</li><li>MATLAB</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 07 ============ -->
+  <article class="proj" id="camera" data-cap="perception research">
+    <div class="proj-head">
+      <span class="num">07</span>
+      <div>
+        <h2>Camera Vision — Doosan H2515 Pick and Place</h2>
+        <div class="where">PROOF Lab, Stevens Institute of Technology</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/UndergradResearch/cameravision.png" alt="Camera vision cube detection"></div>
+        <div class="cap"></div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/UndergradResearch/cameravision.png" data-cap=""><img src="Files/RoboticsProjs/UndergradResearch/cameravision.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/UndergradResearch/DoosanH2515.png" data-cap="Doosan H2515 in the PROOF Lab"><img src="Files/RoboticsProjs/UndergradResearch/DoosanH2515.png" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>Data was collected with a webcam overlooking foam cubes scattered across the workspace, annotated in Roboflow, then trained with YOLOv8 to identify the pixel location and colour class of each cube. Because the dataset was small, colours close to the table had lower confidence, so higher-contrast colours were used instead. The centre of each bounding box was found with OpenCV and the coordinates scaled to the workspace.</p>
+        <p>Once joint angles were computed, the robot was sent commands using the Doosan Robot Language, a Python-based framework. I used the sockets library to establish the client-server connection that drove the arm.</p>
+        <ul class="chips"><li>OpenCV</li><li>YOLOv8</li><li>Python</li><li>Pick and Place</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 08 ============ -->
+  <article class="proj" id="sesma" data-cap="mechatronics">
+    <div class="proj-head">
+      <span class="num">08</span>
+      <div>
+        <h2>SESMA 3.0 — Soft Exosuit for Spinal Muscular Atrophy</h2>
+        <div class="where">Senior capstone · Stevens Institute of Technology</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/SESMA/SESMAdevice3dp.png" alt="SESMA device"></div>
+        <div class="cap"></div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/SESMA/SESMAdevice3dp.png" data-cap=""><img src="Files/RoboticsProjs/SESMA/SESMAdevice3dp.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SESMA/InterpolatedSTS.png" data-cap="Interpolated sit-to-stand cable path"><img src="Files/RoboticsProjs/SESMA/InterpolatedSTS.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SESMA/Gearing.png" data-cap="CAD with gear switching mechanism"><img src="Files/RoboticsProjs/SESMA/Gearing.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SESMA/Machining Pics.png" data-cap="Machined parts"><img src="Files/RoboticsProjs/SESMA/Machining Pics.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/SESMA/Cable Path.png" data-cap="Cable path"><img src="Files/RoboticsProjs/SESMA/Cable Path.png" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>An external device to assist type III SMA patients with sit-to-stand transitions. It autonomously detects when the user wants to stand, actuates a spring tied to a spool, and a cable routed down the wearer's leg pulls them up. It achieved 10% assistance against the previous iteration's 3–4%, with total volume down 17% and width down 28%.</p>
+        <p>The main challenge was using a single motor to actuate both the spring charging mechanism and the cam that changes state, solved with a geared switching mechanism. To detect the transition we ran motion capture with markers routed like the cable, built 3D splines through the points, and discretised them to approximate how much cable length changes from sitting to standing — then actuated at the point of maximum knee torque.</p>
+        <ul class="chips"><li>Mechatronics</li><li>3D Splines</li><li>CAD</li><li>SolidWorks</li><li>Machining</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 09 ============ -->
+  <article class="proj" id="grip" data-cap="mechatronics">
+    <div class="proj-head">
+      <span class="num">09</span>
+      <div>
+        <h2>Hand Squeezing Device for Grip Rehabilitation</h2>
+        <div class="where">ME 522 · Stevens Institute of Technology</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" alt="Grip rehabilitation device"></div>
+        <div class="cap">Final assembly</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true" data-src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" data-cap="Final assembly"><img src="Files/RoboticsProjs/Mechatronics/handsqueezerbox.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Mechatronics/circuitdiagram.png" data-cap="Wiring diagram"><img src="Files/RoboticsProjs/Mechatronics/circuitdiagram.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Mechatronics/schematic.png" data-cap="Logic schematic"><img src="Files/RoboticsProjs/Mechatronics/schematic.png" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>Built for a graduate mechatronics course, this device was designed to alleviate joint pain and rebuild hand and forearm strength, with applications in PT clinics for testing and monitoring grip strength. A knob sets the squeezing strength, shown on an LCD; a limit switch on the handle counts repetitions and triggers a buzzer.</p>
+        <p>It ran on a PIC16F88 microcontroller programmed in PICBasic Pro — reading the potentiometer needed ADCIN rather than the Pot function to translate force correctly. The force is translated through a fourbar linkage that stretches a spring, which on this budget was a rubber band.</p>
+        <ul class="chips"><li>Mechatronics</li><li>PICBasic Pro</li><li>PIC16F88</li><li>Fourbar Linkage</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 10 ============ -->
+  <article class="proj" id="endeffector" data-cap="mechatronics">
+    <div class="proj-head">
+      <span class="num">10</span>
+      <div>
+        <h2>Robot End Effector for Pick and Place</h2>
+        <div class="where">PROOF Lab, Stevens Institute of Technology</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/Mechatronics/endeffector.png" alt="3D printed robot gripper end effector"></div>
+        <div class="cap"></div>
+      </div>
+      <div class="text">
+        <p>The PROOF Lab's Doosan H2515 6-DoF arm needed an end effector for pick and place, so I designed and 3D printed a gripper that opens and closes its jaws under a PWM signal from an Arduino sent to a motor controller.</p>
+        <p>The arm's flange provided a 24V digital IO, which I stepped down to 5V with a voltage divider for the Arduino. A gear and hinging mechanism drives the jaws, letting actuation be toggled directly from the robot's own programming language.</p>
+        <ul class="chips"><li>SolidWorks</li><li>Mechatronics</li><li>3D Printing</li></ul>
+      </div>
+    </div>
+  </article>
 
 
 
-    <body>
-        <header>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="robotics.html">Robotics</a></li>
-                <li><a href="miscellaneous.html">Extracurriculars</a></li>
-                <li><a href="resume.html">Resume</a></li>
-            </ul>
-        </header>
+  <!-- ============================================================
+       ADDING A PROJECT — copy the block below, paste it in order,
+       and fill it in. The filter and tally pick it up automatically.
 
+         id="…"        unique; becomes the deep link (…#myproject)
+         data-cap="…"  one or more of: locomotion control perception
+                       mechatronics research — space separated, drives
+                       the filter. Add "research" whenever .where names
+                       a lab (Robomechanics Lab, PROOF Lab, etc).
+         .num          the running number, update by hand
+         .where        add  <span class="wip">In progress</span>  if active
+         .thumbs       optional — delete the whole div for a single image
+                       (each button's data-src / data-cap feed the main view)
+         .out          optional external link, delete if unused
 
+  <article class="proj" id="PROJECT_ID" data-cap="control">
+    <div class="proj-head">
+      <span class="num">10</span>
+      <div>
+        <h2>Project Title</h2>
+        <div class="where">Lab or course · context</div>
+      </div>
+    </div>
+    <div class="proj-body">
+      <div class="media">
+        <div class="main"><img src="Files/RoboticsProjs/Folder/main.png" alt="Describe the image"></div>
+        <div class="cap">Caption for the image above</div>
+        <div class="thumbs">
+          <button type="button" aria-selected="true"  data-src="Files/RoboticsProjs/Folder/main.png" data-cap="Caption for the image above"><img src="Files/RoboticsProjs/Folder/main.png" alt=""></button>
+          <button type="button" aria-selected="false" data-src="Files/RoboticsProjs/Folder/two.png"  data-cap="Second caption"><img src="Files/RoboticsProjs/Folder/two.png" alt=""></button>
+        </div>
+      </div>
+      <div class="text">
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <ul class="chips"><li>Skill</li><li>Skill</li><li>Skill</li></ul>
+        <div class="out"><a href="https://example.com" target="_blank" rel="noopener">Link label ↗</a></div>
+      </div>
+    </div>
+  </article>
+       ============================================================ -->
 
-            
-        <h1>Robotics Projects</h1>
-        <div class="description">Manipulation, reinforcement learning, control, SLAM, RRT, resolved rates, camera vision, and mechatronics</div>
+  <p class="empty" id="empty" hidden>No projects in that area.</p>
+</main>
 
+<footer class="wrap">
+  <div class="inner">
+    <div class="links">
+      <a href="mailto:georgechan930@gmail.com">georgechan930@gmail.com</a>
+      <a href="https://github.com/georgechanortiz" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="copy">© 2026 George Ortiz</div>
+  </div>
+</footer>
 
-            <section class="projects">
-            <div class="project-card">
-                <img src="Files/RoboticsProjs/1.png" alt="Project 1" class="image"/>
-                <h2>LeRobot Arm Hackathon NYC - SO-100</h2>
-                <h4>After construction, calibration, and data collection, the mechanical and electrical noise were separated before training. 
-                    Applying a low pass filter to the electrical noise reduced joint trembling, and increasing the frame rate boosted trajectory 
-                    speeds by 200%. My team won the $1,000 prize for the “Most Innovative Use of Data.” SO-100 can pick up a pen and draw
-                    autonomously while using camera vision as feedback.</h4>
-                <div class="skills-section">
+<script>
+/* Progressive enhancement: the page is complete without JS.
+   These behaviours are additive only. */
 
-                <ul class="skills-list">
-                    <li>Action Chunking Transformer (ACT) Policy</li>
-                    <li>Signal Processing</li>
-                    <li>Machine Learning</li>
-                    <li>Optimization</li>
-                    <li>Vision Feedback</li>
-                </ul>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="Files/RoboticsProjs/2.png" alt="Project 2" class="image"/>
-                <h2>Machine Learning Algorithm - Doosan H2515 Pick and Place</h2>
-                <h4>Trained ML model to identify cubes, returning pixel location and color class. Pixel coordinates converted into 
-                numerical inverse kinematic solution for arm navigation. Function then used in path planning algorithms, which was 
-                sent via client-server connection with TCP protocol for robot arm to execute. </h4>
-                <div class="skills-section">
+/* Don't autoplay looping clips for viewers who asked for reduced motion. */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[autoplay]').forEach(v => {
+    v.autoplay = false;
+    v.pause();
+  });
+}
 
-                <ul class="skills-list">
-                    <li>OpenCV</li>
-                    <li>YOLOv8</li>
-                    <li>DRL Programming Language</li>
-                    <li>Python</li>
-                    <li>Path Planning</li>
-                    <li>Pick and Place</li>
-                </ul>
-                </div>
-            </div>
+/* ---- swap the main image from a thumbnail ---- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('.thumbs button');
+  if (!t) return;
+  const media = t.closest('.media');
+  const main = media.querySelector('.main');
 
-            <div class="project-card">
-                <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/m14FWpo8iBI?autoplay=1&mute=1&loop=1&playlist=m14FWpo8iBI&controls=0&modestbranding=1&showinfo=0&rel=0"
-                    title="YouTube video"
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen>
-                </iframe>
-                
-                </div>
+  // Rebuild the main slot so it can hold either an image or a video.
+  // Replacing the node also stops whatever was playing.
+  main.replaceChildren();
+  let el;
+  if (t.dataset.type === 'video') {
+    el = document.createElement('video');
+    el.controls = true;
+    el.loop = true;
+    el.playsInline = true;
+    el.preload = 'metadata';
+    // Loop silently like a GIF, unless the viewer asked for reduced motion.
+    el.muted = true;
+    el.autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } else {
+    el = document.createElement('img');
+    el.alt = t.dataset.cap || '';
+  }
+  el.src = t.dataset.src;          // set via property, so spaces need no escaping
+  main.appendChild(el);
 
-                <h2>Using Gradient to Compute Min. Norm Pseudoinverse Redundancy Resolution</h2>
-                <h4>Jacobian and gradient of path calculated and projected into null space to maintain orthogonality to the surface. 
-                Robot links and movement simulated in MATLAB with min. norm pseudoinverse redundancy resolution algorithm. Maintaining orthogonality to the 
-                surface is extremely applicable in welding or writing.  </h4>
-                    <div class="skills-section">
+  media.querySelector('.cap').textContent = t.dataset.cap || '';
+  media.querySelectorAll('.thumbs button').forEach(b =>
+    b.setAttribute('aria-selected', String(b === t)));
+});
 
-                <ul class="skills-list">
-                    <li>MATLAB</li>
-                    <li>Jacobian</li>
-                    <li>Resolved Rates</li>
-                </ul>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="Files/RoboticsProjs/5.png" alt="Project 4" class="image"/>
-                <h2>Control and Resolved Rates Simulations in MATLAB</h2>
-                <h4>Cost functions were implemented for link speed optimization. Inverse kinematics via the closed loop algorithm 
-                enabled the robot to adhere to speed constraints (1mm tolerance translational, 0.0524 radians rotational), results
-                simulated in MATLAB via first order interpolation.  </h4>
-                <div class="skills-section">
+/* ---- capability filter ---- */
+const projects = [...document.querySelectorAll('.proj')];
+const dropdown = document.getElementById('filterDropdown');
+const toggle   = document.getElementById('filterToggle');
+const menu     = document.getElementById('filterMenu');
+const label    = toggle.querySelector('.dropdown-label');
+const buttons  = [...menu.querySelectorAll('button')];
+const tally    = document.getElementById('tally');
+const empty    = document.getElementById('empty');
 
-                <ul class="skills-list">
-                    <li>Cost Functions</li>
-                    <li>Resolved Rates</li>
-                    <li>MATLAB</li>
-                </ul>
-                </div>
-            </div>
+function applyFilter(cap) {
+  let shown = 0;
+  let name  = 'All';
+  projects.forEach(p => {
+    const match = cap === 'all' || p.dataset.cap.split(' ').includes(cap);
+    p.hidden = !match;
+    if (match) shown++;
+  });
+  buttons.forEach(b => {
+    const pressed = b.dataset.cap === cap;
+    b.setAttribute('aria-pressed', String(pressed));
+    if (pressed) name = b.textContent.trim();
+  });
+  label.textContent = `Filter: ${name}`;
+  tally.textContent = `${shown} of ${projects.length} shown`;
+  empty.hidden = shown > 0;
+}
 
-                <div class="project-card">
-                <img src="Files/RoboticsProjs/SLAMAndRRT.png" alt="Project 1" class="image"/>
-                <h2>RRT and SLAM Implementation for 2D Mobile Robot with Obstacle Avoidance</h2>
-                <h4>RRT grows tree until goal condition reached, then parent nodes tracked back to origin to reveal the path. 
-                SLAM and Kalman filtering was used to calculate the uncertainty (red ellipses) at each time step. 100 instances 
-                were run, and different optimization parameters were analyzed for effectiveness. Shown is shortest path found (left) 
-                and min. uncertainty at goal region (right) </h4>
-                <div class="skills-section">
+function openMenu()  { dropdown.classList.add('open');    toggle.setAttribute('aria-expanded', 'true'); }
+function closeMenu() { dropdown.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
 
-                <ul class="skills-list">
-                    <li>RRT</li>
-                    <li>Kalman Filter</li> 
-                    <li>SLAM</li>
-                    <li>MATLAB</li>
-                    <li>Path Planning</li>
-                    <li>Obstacle Avoidance</li> 
-                    
-                </ul>
-                </div>
-            </div>
+toggle.addEventListener('click', () => {
+  dropdown.classList.contains('open') ? closeMenu() : openMenu();
+});
+document.addEventListener('click', e => {
+  if (!dropdown.contains(e.target)) closeMenu();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeMenu();
+});
+buttons.forEach(b => b.addEventListener('click', () => { applyFilter(b.dataset.cap); closeMenu(); }));
+applyFilter('all');
 
-
-            <div class="project-card">
-                <img src="Files/RoboticsProjs/7.png" alt="Project 5" class="image"/>
-                <h2>Doosan H2515 Robot Gripper - End Effector</h2>
-                <h4>Affordable end effector for robot needed to kickstart robotics research in the PROOF Lab. 
-                    Gear and hinging mechanism was used to open and close jaws, with PWM signal from Arduino sent to 
-                    motor controller to actuate the jaws. Arduino also controlled by digital IO on robot flange to allow jaw 
-                    actuation to be toggled directly via the Doosan Programming Language.  </h4>
-
-                <div class="skills-section">
-
-                    <ul class="skills-list">
-                    <li>SolidWorks</li>
-                    <li>Mechatronics</li>
-                    <li>3D Printing</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="Files/RoboticsProjs/4.png" alt="Project 6" class="image"/>
-                <h2>SESMA 3.0 - Soft Exosuit for Patients with Spinal Muscular Atrophy</h2>
-                <h4>Device helps patients stand independently using cables routed down leg. 8 markers were placed to simulate cable path,
-                    and 3D splines were used to simulate a cable. Numerical techniques then used to discretize the data to calculate the 
-                    change in length from cable during sit to stand transitions. This was implemented in parallel with PID compensation 
-                    to monitor transitions for real-time feedback and autonomous activation when needed. Final Prototype was 3D printed 
-                    and machined and delivered 10% knee torque assistance.  </h4>
-                <div class="skills-section">
-
-                    <ul class="skills-list">
-                    <li>CNC programming and machining</li>
-                    <li>PID compensation</li>
-                    <li>3D splines</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="Files/RoboticsProjs/8.png" alt="Project 7" class="image"/>
-                <h2>Hand Squeezing Device for Grip Strength Rehabilitation</h2>
-                <h4>Hand squeezer device with adjustable force. A four-bar linkage adjusts the tension of a band in the device controlled
-                    through a potentiometer. PIC16F88 microcontroller was used to control LCD display, read sensors, and control actuators, 
-                    programmed and debugged in PICBasic Pro language.  </h4>
-
-                <div class="skills-section">
-
-                    <ul class="skills-list">
-                    <li>PICBasic Pro</li>
-                    <li>Mechatronics</li>
-                    <li>Fourbar Linkage</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </body>
-</html>  -->
+/* If someone deep-links to a hidden project, reveal everything first. */
+if (location.hash) {
+  const target = document.querySelector(location.hash);
+  if (target && target.classList.contains('proj')) applyFilter('all');
+}
+</script>
+</body>
+</html>

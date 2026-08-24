@@ -1,239 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>George Ortiz Portfolio</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Ortiz | Robotics Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
 
-    <body>
-        <header>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="robotics.html">Robotics</a></li>
-                <li><a href="miscellaneous.html">Extracurriculars</a></li>
-                <li><a href="resume.html">Resume</a></li>
-            </ul>
-        </header>
+<header>
+  <div class="wrap">
+    <a class="mark" href="index.html">GEORGE ORTIZ<span></span></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="robotics.html">Robotics</a>
+      <a href="miscellaneous.html">Extracurriculars</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
 
-        <section class="hero">
-        
-        <div class="hero-text">
-            <div class="typing-banner"><h1 id="typed-text">Hi, I'm George Ortiz</h1></div>
-            <div class="additional-text">Robotics Researcher ◇ Queens, NYC</div>
-            <section class="about">
-                <div class="about">
-                    <p>I am a Masters student at CMU, working in the <a class="special-link" href="https://www.cmu.edu/me/robomechanicslab/">Robomechanics Lab</a> 
-                        under <a class="special-link" href="https://www.meche.engineering.cmu.edu/directory/bios/johnson-aaron.html">Professor Aaron Johnson</a>. 
-                        My research focuses on robot simulation and reinforcement learning, with a particular focus on developing robust control policies for quadruped locomotion. </p>
-                    <p>I recently earned a Bachelor's degree in Mechanical Engineering from Stevens Institute of Technology, where I worked 
-                        with <a class="special-link" href="https://www.stevens.edu/profile/kpochira">Professor Kishore Pochiraju</a> on robot manipulator path planning. My experience is listed below, with my projects 
-                        accessible through the tabs above.  </p>
-                </div>
-            </section>
-            <div class="icon-container">
-            
-                <a href="https://github.com/georgechanortiz" target="_blank" title="GitHub"><img src="Files/Icons/Github.png" alt="GitHub" class="icon github-icon"></a>
-                <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" title="LinkedIn"><img src="Files/Icons/Linkedin.png" alt="linkedin" class="icon linkedin-icon"></a>
-                <a href="mailto:georgechan930@gmail.com" title="Email"><img src="Files/Icons/Mail.png" alt="Email" class="icon email-icon"></a>
-                <a href="resume.html" class="resume-link">Resume</a>
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <img src="Files/RoboticsProjs/GradResearch/MPMSimwith2Muds.gif"
+       alt="Quadruped robot walking through simulated mud in an MPM environment">
+  <div class="wrap">
+    <div class="label">Robotics Researcher — Carnegie Mellon</div>
+    <h1>George Ortiz</h1>
+    <!-- <p class="pitch">
+      Designing robust control policies for legged robots that can walk quickly through mud. 
+      Mud is a non-Newtonian fluid, making it a challenge for the robot to walk through as it experiences a range of forces as it steps in and out of the mud. 
+      I model these forces so that a quadruped can adapt its gait in real time to maintain stability and traction.
 
-            </div>
+
+    </p> -->
+    <div class="actions">
+      <a class="btn solid" href="#about">About me</a>
+      <a class="btn" href="#news">Recent news</a>
+      <a class="btn" href="robotics.html">Robotics projects</a>
+      <a class="btn" href="resume.html">Resume</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="about">
+    <div>
+      <div class="label">Who I am</div>
+      <p class="body-text">
+        I'm a second-year Master's student on the Mechanical Engineering Research track at Carnegie Mellon University. 
+        My research in the <a href="https://www.cmu.edu/me/robomechanicslab/">Robomechanics Lab</a>,  advised by  
+        <a href="https://www.meche.engineering.cmu.edu/directory/bios/johnson-aaron.html">Prof. Aaron Johnson</a>,
+        involves robot simulation and reinforcement learning. I am working on developing robust control policies 
+        for quadruped locomotion over complex, contact-rich natural environments. 
+      </p>
+      <p class="body-text">
+        Before CMU, I earned a B.E. in Mechanical Engineering at Stevens, where I worked with
+        <a href="https://www.stevens.edu/profile/kpochira">Prof. Kishore Pochiraju</a> on implementing computer vision
+        for robot manipulation pick and place tasks. 
+        Outside the lab, I enjoy spending my time woodworking and cooking delicious food.
+      </p>
+    </div>
+    <img src="Files/headshot.jpg" alt="George Ortiz">
+  </section>
+
+  <!-- ===================== NEWS ===================== -->
+  <section id="news">
+    <div class="sec-head">
+      <div class="label">01 — Recent news</div>
+      <h2>What I've been up to</h2>
+    </div>
+
+    <ul class="news">
+      <li class="latest">
+        <div class="when">May 2026</div>
+        <div class="item">
+          <div>
+            <p>
+              I met <b>Jensen Huang</b>, the founder and CEO of NVIDIA, at Carnegie Mellon's pre-commencement 
+              and had the opportunity to share how I am utilizing Nvidia Omniverse in my research.
+              <a href="https://www.cmu.edu/news/stories/archives/2026/may/nvidia-founder-ceo-jensen-huang-to-carnegie-mellon-university-graduates-shape-what-comes-next"
+                 target="_blank" rel="noopener">CMU News</a>
+            </p>
+          </div>
+          <a class="thumb-link"
+             href="https://www.cmu.edu/news/stories/archives/2026/may/nvidia-founder-ceo-jensen-huang-to-carnegie-mellon-university-graduates-shape-what-comes-next"
+             target="_blank" rel="noopener">
+            <img src="Files/Home/Jensen.webp" alt="George Ortiz with NVIDIA founder and CEO Jensen Huang at Carnegie Mellon">
+          </a>
         </div>
-        <img src="Files/headshot.jpg" alt="George Ortiz Profile Picture" class="hero-image" />
-        </section>
+      </li>
 
-
-
-
-
-        <!-- Tab links -->
-        <!-- <div class="tab">
-            <button class="tablinks" onclick="Tabs(event, 'Work Experience')" id="defaultOpen">Work Experience</button>
-            <button class="tablinks" onclick="Tabs(event, 'Education')" >Education</button>
-        </div> -->
-
-        <!-- Tab content -->
-        <!-- <div id="Education" class="tabcontent"> -->
-        <section id="education" class="education">
-            <div class="education-header">Education</div>
-            <div class="education-entry">
-                <img src="Files/Icons/cmu.png" alt="cmuicon" class="educationicon"/>
-                <div class="education-text">
-                    <div><a href="https://www.cmu.edu/" target="_blank" class="schoolname">Carnegie Mellon University</a></div>
-                    <div class="education-info">2025 - 2027 | GPA: 4.0/4.0 | M.S. in Mechanical Engineering - Research</div>   
-                </div>
-            </div>  
-
-            <div class="education-entry">
-                <img src="Files/Icons/stevens.png" alt="steveicon" class="educationicon"/>
-                <div class="education-text">
-                    <div><a href="https://www.stevens.edu/" target="_blank" class="schoolname">Stevens Institute of Technology</a></div>
-                    <div class="education-info">2020 - 2025 | GPA: 3.75/4.0 | B.E. in Mechanical Engineering, Robotics Concentration | Dean's List | CO-OP Program</div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- <div id="Work Experience" class="tabcontent"> -->
-        <section id="work">
-            <div class="work-header">Experience</div>
-            
-            <div class="work-entry">
-                <img src="Files/Icons/cmu.png" alt="cmuicon" class="workicon"/>
-                <div class="work-text">
-                    <div><a href="https://www.cmu.edu/" target="_blank" class="schoolname">Carnegie Mellon University</a></div> 
-                    <div class="education-info">Fall 2025 - Present | Robotics Researcher | Robomechanics Lab</div> 
-                    <ul class="experience-list">
-                        <li>IsaacLab</li>
-                        <li>Reinforcement Learning</li>
-                        <li>QuadSDK</li>
-                        <li>Sim2Sim</li>
-                        <li>Sim2Real</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="work-entry">
-                <img src="Files/Icons/stevens.png" alt="steveicon" class="workicon"/>
-                <div class="work-text">
-                    <div><a href="https://www.stevens.edu/" target="_blank" class="schoolname">Stevens Institute of Technology</a></div>
-                    <div class="education-info">Spring 2023 – Spring 2025 | Robotics Engineer | PROOF Lab</div>
-                    <ul class="experience-list">
-                        <li>Python</li>
-                        <li>3D Printing</li>
-                        <li>Camera Vision</li>
-                        <li>Mechatronics</li>
-                        <li>YOLOv8</li>
-                    </ul>
-                    <div class="education-info">Summer 2023 | Materials Processing Researcher</div>
-                    <ul class="experience-list">
-                        <li>SEM, TEM</li>
-                        <li>Spectrophotometry</li>
-                        <li>ASEE MAS 2023 Poster Session</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="work-entry">
-                <img src="Files/Icons/zimmer.png" alt="zimmericon" class="workicon"/>
-                <div class="work-text">
-                    <div><a href="https://www.zimmerbiomet.com/en" target="_blank" class="schoolname">Zimmer Biomet Holdings</a></div>
-                    <div class="education-info">Summer 2024 | Manufacturing Engineer Intern</div>
-                    <ul class="experience-list">
-                        <li>Fixture Design and Modeling</li>
-                        <li>Siemens NX</li>
-                        <li>Power BI</li>
-                        <li>Lean Manufacturing</li>
-                    </ul>
-                    <div class="education-info">Fall 2023 | Quality Engineer Co-op</div>
-                    <ul class="experience-list">
-                        <li>A3 Problem Solving</li>
-                        <li>Doc Routing</li>
-                        <li>QSR Updates</li>
-                        <li>Root Cause Analysis</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="work-entry">
-                <img src="Files/Icons/newlinestructures.png" alt="nlsicon" class="workicon"/>
-                <div class="work-text">
-                    <div><a href="https://www.newlinestructures.com/" target="_blank" class="schoolname">New Line Structures</a></div>
-                    <div class="education-info">Fall 2022 | Assistant Project Manager Co-op</div>
-                    <ul class="experience-list">
-                        <li>CO Processing</li>
-                        <li>Cost and Labor Estimation</li>
-                        <li>Logistics</li>
-                    </ul>
-                    <div class="education-info">Spring 2022 | Project Engineer Co-op</div>
-                    <ul class="experience-list">
-                        <li>HVAC Visual Inspections</li>
-                        <li>Excel Optimization</li>
-                        <li>Doc Control</li>
-                    </ul>
-                </div>
-            </div>
-        </section>      
-
-
-
-
-
-
-
-
-        <section class="carousel">
-        <div class="carousel-container">
-            <div class="carousel-slide active">
-            <a href="robotics.html#quad"><img src="Files/RoboticsProjs/GradResearch/go2.png" alt="Slide 1" class="img"></a>
-            <div class="carousel-caption">Research in Quadruped Locomotion</div>
-            </div>
-            <div class="carousel-slide">
-            <a href="robotics.html#camera"><img src="Files/RoboticsProjs/UndergradResearch/cameravision.png" alt="Slide 2" class="img"></a>
-            <div class="carousel-caption">Pick and Place Camera Algorithm</div>
-            </div>
-            <div class="carousel-slide">
-            <a href="robotics.html#fsd"><img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt="Slide 3" class="img"></a>
-            <div class="carousel-caption">SLAM and FSD for a Tesla Model 3</div>
-            </div>
-            <div class="carousel-slide">
-            <a href="robotics.html#hackathon"><img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt="Slide 4" class="img"></a>
-            <div class="carousel-caption">RL in Robot Hackathon</div>
-            </div>
-            <div class="carousel-slide">
-            <a href="robotics.html#manipulation"><img src="Files/RoboticsProjs/Manipulation/3dresolvedrates.png" alt="Slide 5" class="img"></a>
-            <div class="carousel-caption">Resolved Rates and Robot Manipulation</div>
-            </div>
-            <button class="carousel-btn prev">&#10094;</button>
-            <button class="carousel-btn next">&#10095;</button>
+      <li>
+        <div class="when">May 2026</div>
+        <div class="item">
+          <div>
+            <p>
+              My research on training adaptive policies for quadruped robots to traverse muddy terrain, conducted 
+              in collaboration with <b>FieldAI</b>, was featured in a CMU Engineering article. 
+              <a href="https://engineering.cmu.edu/news-events/news/2026/05/05-robots-walk-through-mud.html"
+                 target="_blank" rel="noopener">CMU Engineering</a>
+            </p>
+          </div>
+          <a class="thumb-link"
+             href="https://engineering.cmu.edu/news-events/news/2026/05/05-robots-walk-through-mud.html"
+             target="_blank" rel="noopener">
+            <img src="Files/Home/spot.png" alt="Legged robot walking through mud">
+          </a>
         </div>
+      </li>
+    </ul>
+  </section>
 
-        <div class="carousel-dots"></div>
-        </section>
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience">
+    <div class="sec-head">
+      <div class="label">02 — Experience</div>
+      <h2>Work Experience</h2>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-        <footer>
-        <section id="contact">
+    <div class="rows">
+      <div class="r">
+        <div class="when">Fall 2025 — present</div>
         <div>
-            <h2>Contact Info</h2>
+          <div class="org"><a href="https://www.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a></div>
+          <div class="what">Robotics Researcher, Robomechanics Lab</div>
         </div>
-        <div class="contactlinks">
-            <ul>
-                <li><a href="mailto:georgechan930@gmail.com" title="Email">Email</a></li>
-                <li><a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/georgechanortiz" target="_blank">GitHub</a></li>
-            </ul>
+      </div>
+
+      <div class="r">
+        <div class="when">Spring 2023 — Spring 2025</div>
+        <div>
+          <div class="org"><a href="https://www.stevens.edu/" target="_blank" rel="noopener">Stevens Institute of Technology</a></div>
+          <div class="what">Robotics Engineer, PROOF Lab</div>
         </div>
-        </section>
-        <p>&copy; 2025 George Ortiz. All rights reserved.</p>
-        </footer>
+      </div>
 
+      <div class="r">
+        <div class="when">Summer 2023</div>
+        <div>
+          <div class="org"><a href="https://www.stevens.edu/" target="_blank" rel="noopener">Stevens Institute of Technology</a></div>
+          <div class="what">Materials Processing Researcher</div>
+        </div>
+      </div>
 
+      <div class="r">
+        <div class="when">2023 — 2024</div>
+        <div>
+          <div class="org"><a href="https://www.zimmerbiomet.com/en" target="_blank" rel="noopener">Zimmer Biomet</a></div>
+          <div class="what">Manufacturing Engineer Intern, previously Quality Engineer Co-op</div>
+        </div>
+      </div>
 
+      <div class="r">
+        <div class="when">2022</div>
+        <div>
+          <div class="org"><a href="https://www.newlinestructures.com/" target="_blank" rel="noopener">New Line Structures</a></div>
+          <div class="what">Assistant Project Manager &amp; Project Engineer Co-op</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===================== EDUCATION ===================== -->
+  <section id="education">
+    <div class="sec-head">
+      <div class="label">03 — Education</div>
+      <h2>Education</h2>
+    </div>
 
+    <div class="rows">
+      <div class="r">
+        <div class="when">2025 — 2027</div>
+        <div>
+          <div class="org"><a href="https://www.cmu.edu/" target="_blank" rel="noopener">Carnegie Mellon University</a></div>
+          <div class="what">M.S. Mechanical Engineering (Research) — GPA 4.0/4.0</div>
+        </div>
+      </div>
 
+      <div class="r">
+        <div class="when">2020 — 2025</div>
+        <div>
+          <div class="org"><a href="https://www.stevens.edu/" target="_blank" rel="noopener">Stevens Institute of Technology</a></div>
+          <div class="what">B.E. Mechanical Engineering, Robotics concentration — GPA 3.75/4.0, Dean's List, Co-op</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects">
+    <div class="sec-head">
+      <div class="label">04 — Selected projects</div>
+      <h2>Selected projects</h2>
+    </div>
 
+    <div class="grid">
+      <a class="card" href="robotics.html#fsd">
+        <div class="thumb"><img src="Files/RoboticsProjs/MCTProject/FSDProj.png" alt="Self-driving Tesla Model 3 simulated in Webots"></div>
+        <div class="txt">
+          <h3>SLAM and FSD for a Tesla Model 3</h3>
+          <p>PID, LQR and MPC controllers compared in Webots, with A* replanning and EKF SLAM.</p>
+        </div>
+      </a>
 
-        <script src="carousel.js"></script>
-    </body>
+      <a class="card" href="robotics.html#camera">
+        <div class="thumb"><img src="Files/RoboticsProjs/UndergradResearch/cameravision.png" alt="Camera vision detection of coloured cubes for pick and place"></div>
+        <div class="txt">
+          <h3>Pick and Place Camera Algorithm</h3>
+          <p>YOLOv8 model driving a Doosan H2515 arm over a TCP client-server link.</p>
+        </div>
+      </a>
+
+      <a class="card" href="robotics.html#hackathon">
+        <div class="thumb"><img src="Files/RoboticsProjs/Hackathon/drawingdollarsign.png" alt="SO-100 robot arm drawing a dollar sign"></div>
+        <div class="txt">
+          <h3>LeRobot Hackathon — SO-100</h3>
+          <p>Filtering and frame skipping doubled task speed. Won Most Innovative Use of Data.</p>
+        </div>
+      </a>
+
+      <a class="card" href="robotics.html#manipulation">
+        <div class="thumb"><img src="Files/RoboticsProjs/Manipulation/3dresolvedrates.png" alt="Resolved rates manipulator simulation in MATLAB"></div>
+        <div class="txt">
+          <h3>Resolved Rates and Manipulation</h3>
+          <p>Null-space projection and min-norm pseudoinverse redundancy resolution in MATLAB.</p>
+        </div>
+      </a>
+
+      <a class="card" href="robotics.html">
+        <div class="thumb"><img src="Files/RoboticsProjs/SLAMRRT/SLAMAndRRT.png" alt="SLAM and RRT path planning for a 2D mobile robot"></div>
+        <div class="txt">
+          <h3>SLAM and RRT Planning</h3>
+          <p>Sampling-based planning with Kalman-filtered uncertainty along the trajectory.</p>
+        </div>
+      </a>
+
+      <a class="card" href="miscellaneous.html">
+        <div class="thumb"><img src="Files/MiscProjs/GNPResearch/GoldNanoparticles.png" alt="Gold nanoparticle solutions of varying concentration"></div>
+        <div class="txt">
+          <h3>Extracurricular work</h3>
+          <p>Gold nanoparticle research, woodworking, machining, and other side quests.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="inner">
+    <div class="links">
+      <a href="mailto:georgechan930@gmail.com">georgechan930@gmail.com</a>
+      <a href="https://github.com/georgechanortiz" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/george-ortiz-12120420b/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="copy">© 2026 George Ortiz</div>
+  </div>
+</footer>
+
+</body>
 </html>
